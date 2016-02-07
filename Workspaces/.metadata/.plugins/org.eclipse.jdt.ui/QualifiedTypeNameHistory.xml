@@ -2,4 +2,14 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Compressor"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.DoubleSolenoid"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.CANTalon"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.DigitalInput"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.interfaces.Potentiometer"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.AnalogPotentiometer"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.CANTalon.TalonControlMode"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Joystick.AxisType"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.CANTalon.FeedbackDevice"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.interfaces.Gyro"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.AnalogGyro"/>
 </qualifiedTypeNameHistroy>
