@@ -34,14 +34,16 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(3, 4);
 	CANTalon flyWheel = new CANTalon(0);
 	CANTalon dustPanTilt = new CANTalon(1);
-	DigitalInput limitSwitch;
 	Potentiometer dustPanAngle;
 	Gyro gyro;
+	DigitalInput upperLimit;
+	DigitalInput bottomLimit;
 	boolean buttonValue;
 	boolean locksButtonValue;
 	boolean locksButtonCloseValue;
 	boolean inverted;
 	boolean locksEngaded = false;
+	double adjTilt;
 	double Kp = 0.01;
 
 
@@ -60,7 +62,9 @@ public class Robot extends IterativeRobot {
         //Assign objects
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
     	stick = new Joystick(0); //Assign to a joystick on port 0
-    
+    	upperLimit = new DigitalInput(1);
+    	bottomLimit = new DigitalInput(2);
+    	
     	//Talaon PID Controler
         flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
         flyWheel.reverseSensor(false);
@@ -105,16 +109,16 @@ public class Robot extends IterativeRobot {
     	double controllerRX = controller.getRawAxis(4) * 0.48;
 
     	//Drivetrain
-    	merlin.arcadeDrive(controllerLY, controllerRX);
+    	//merlin.arcadeDrive(controllerLY, controllerRX);
     	
     	//Shooter Wheel
         flyWheel.set(stick.getY());
     
     
         //Dust Pan Angle
-        dustPanAngle = new AnalogPotentiometer(0, 360, 30);
-        double degrees = dustPanAngle.get();
-        SmartDashboard.putNumber("Dust Pan Angle", degrees);
+        //dustPanAngle = new AnalogPotentiometer(0, 360, 30);
+        //double degrees = dustPanAngle.get();
+        //SmartDashboard.putNumber("Dust Pan Angle", degrees);
         
 
     }
@@ -132,6 +136,21 @@ public class Robot extends IterativeRobot {
     	
     	//Drivetrain
     	merlin.arcadeDrive(controllerLY, controllerRX);
+    	
+    	//Dust Pan Tilt
+    	
+    	adjTilt = stick.getY() * 0.25;
+    	if(upperLimit.get() == true){
+    		if(stick.getAxis(AxisType.kY) < 0){
+    			dustPanTilt.set(0); //Need to Change to Stick
+    		}
+    		else{
+    			SmartDashboard.putString("Upper Limit Switch", "Upper Limit Hit");
+    		}	
+    	}
+    	else{
+    		dustPanTilt.set(0); //Need to Change to Stick
+    	}
     	
         //Dust Pan Angle
         dustPanAngle = new AnalogPotentiometer(0, 360, 30);
@@ -165,9 +184,11 @@ public class Robot extends IterativeRobot {
     	buttonValue = stick.getRawButton(1);
     	if(buttonValue == true){
     		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Plunger Status", "Out");
     	}
     	else{
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Plunger Status", "Out");
     	}
     	
         //Shooter RPM
