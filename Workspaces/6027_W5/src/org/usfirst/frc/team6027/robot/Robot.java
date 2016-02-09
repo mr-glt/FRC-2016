@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team6027.robot;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
@@ -13,7 +14,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
 	CANTalon flyWheel = new CANTalon(0);
 	CANTalon dustPanTilt = new CANTalon(1);
 	Potentiometer dustPanAngle;
-	Gyro gyro;
+	ADXRS450_Gyro gyro;
 	DigitalInput upperLimit;
 	DigitalInput bottomLimit;
 	boolean buttonValue;
@@ -64,9 +64,9 @@ public class Robot extends IterativeRobot {
     	stick = new Joystick(0); //Assign to a joystick on port 0
     	upperLimit = new DigitalInput(1);
     	bottomLimit = new DigitalInput(2);
-    	
+    	gyro = new ADXRS450_Gyro();
     	//Talaon PID Controler
-        /*
+       /*
     	flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
         flyWheel.reverseSensor(false);
         flyWheel.configNominalOutputVoltage(+0.0f, -0.0f);
@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
         flyWheel.setP(0.22);
         flyWheel.setI(0); 
         flyWheel.setD(0);
-    */
+  */
     }
     
     public void autonomousInit() {
@@ -98,17 +98,18 @@ public class Robot extends IterativeRobot {
             break;
     	}
   */
-    	gyro = new AnalogGyro(1);
+    	
         double angle = gyro.getAngle(); // get current heading
-        SmartDashboard.putNumber("Error", angle);
+
+        SmartDashboard.putNumber("Error", (angle*Kp));
         merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
     }
 
 
     public void teleopPeriodic() {
     	//Vars
-    	double controllerLY = controller.getRawAxis(1) * 0.56;
-    	double controllerRX = controller.getRawAxis(4) * 0.48;
+    	//double controllerLY = controller.getRawAxis(1) * 0.56;
+    	//double controllerRX = controller.getRawAxis(4) * 0.48;
 
     	//Drivetrain
     	//merlin.arcadeDrive(controllerLY, controllerRX);
