@@ -65,6 +65,7 @@ public class Robot extends IterativeRobot {
     	upperLimit = new DigitalInput(1);
     	bottomLimit = new DigitalInput(2);
     	gyro = new ADXRS450_Gyro();
+    	dustPanAngle = new AnalogPotentiometer(0, 210, -10);
     	//Talaon PID Controler
        /*
     	flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
@@ -119,9 +120,9 @@ public class Robot extends IterativeRobot {
     
     
         //Dust Pan Angle
-        //dustPanAngle = new AnalogPotentiometer(0, 360, 30);
-        //double degrees = dustPanAngle.get();
-        //SmartDashboard.putNumber("Dust Pan Angle", degrees);
+        
+        double degrees = dustPanAngle.get();
+        SmartDashboard.putNumber("Dust Pan Angle", degrees);
         
 
     }
@@ -129,16 +130,16 @@ public class Robot extends IterativeRobot {
 
     public void testPeriodic() {
     	//Vars
-    	double controllerLY = controller.getRawAxis(1) * 0.56;
-    	double controllerRX = controller.getRawAxis(4) * 0.48;
+    	//double controllerLY = controller.getRawAxis(1) * 0.56;
+    	//double controllerRX = controller.getRawAxis(4) * 0.48;
 
     	
     	//Compressor
-    	Compressor c = new Compressor(0);
-    	c.setClosedLoopControl(true);
+    	//Compressor c = new Compressor(0);
+    	//c.setClosedLoopControl(true);
     	
     	//Drivetrain
-    	merlin.arcadeDrive(controllerLY, controllerRX);
+    	//merlin.arcadeDrive(controllerLY, controllerRX);
     	
     	//Dust Pan Tilt
     	
@@ -156,7 +157,6 @@ public class Robot extends IterativeRobot {
     	}
     	
         //Dust Pan Angle
-        dustPanAngle = new AnalogPotentiometer(0, 360, 30);
         double degrees = dustPanAngle.get();
         SmartDashboard.putNumber("Dust Pan Angle", degrees);
     	

@@ -1,0 +1,513 @@
+<grip:Pipeline>
+  <sources>
+    <grip:MultiImageFile>
+      <property name="path[108]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\223.jpg"/>
+      <property name="path[363]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\516.jpg"/>
+      <property name="path[295]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\438.jpg"/>
+      <property name="path[191]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\312.jpg"/>
+      <property name="path[359]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\512.jpg"/>
+      <property name="path[323]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\476.jpg"/>
+      <property name="path[73]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\188.jpg"/>
+      <property name="path[255]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\376.jpg"/>
+      <property name="path[187]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\308.jpg"/>
+      <property name="path[151]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\268.jpg"/>
+      <property name="path[319]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\472.jpg"/>
+      <property name="path[69]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\184.jpg"/>
+      <property name="path[33]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\58.jpg"/>
+      <property name="path[215]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\336.jpg"/>
+      <property name="path[147]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\264.jpg"/>
+      <property name="path[111]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\226.jpg"/>
+      <property name="path[29]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\32.jpg"/>
+      <property name="path[107]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\222.jpg"/>
+      <property name="path[362]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\515.jpg"/>
+      <property name="path[294]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\437.jpg"/>
+      <property name="path[190]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\311.jpg"/>
+      <property name="path[358]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\511.jpg"/>
+      <property name="path[322]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\475.jpg"/>
+      <property name="path[72]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\187.jpg"/>
+      <property name="path[254]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\375.jpg"/>
+      <property name="path[186]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\307.jpg"/>
+      <property name="path[150]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\267.jpg"/>
+      <property name="path[318]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\471.jpg"/>
+      <property name="path[68]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\183.jpg"/>
+      <property name="path[32]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\56.jpg"/>
+      <property name="path[214]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\335.jpg"/>
+      <property name="path[146]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\263.jpg"/>
+      <property name="path[110]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\225.jpg"/>
+      <property name="path[28]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\31.jpg"/>
+      <property name="path[106]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\221.jpg"/>
+      <property name="path[361]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\514.jpg"/>
+      <property name="path[293]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\436.jpg"/>
+      <property name="path[357]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\510.jpg"/>
+      <property name="path[321]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\474.jpg"/>
+      <property name="path[289]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\432.jpg"/>
+      <property name="path[71]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\186.jpg"/>
+      <property name="path[9]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\12.jpg"/>
+      <property name="path[253]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\374.jpg"/>
+      <property name="path[185]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\306.jpg"/>
+      <property name="path[317]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\470.jpg"/>
+      <property name="path[67]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\182.jpg"/>
+      <property name="path[249]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\370.jpg"/>
+      <property name="path[31]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\55.jpg"/>
+      <property name="path[213]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\334.jpg"/>
+      <property name="path[145]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\262.jpg"/>
+      <property name="path[27]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\30.jpg"/>
+      <property name="path[209]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\330.jpg"/>
+      <property name="path[105]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\220.jpg"/>
+      <property name="path[360]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\513.jpg"/>
+      <property name="path[292]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\435.jpg"/>
+      <property name="path[356]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\509.jpg"/>
+      <property name="path[320]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\473.jpg"/>
+      <property name="path[288]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\431.jpg"/>
+      <property name="path[70]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\185.jpg"/>
+      <property name="path[8]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\11.jpg"/>
+      <property name="path[252]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\373.jpg"/>
+      <property name="path[184]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\305.jpg"/>
+      <property name="path[316]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\469.jpg"/>
+      <property name="path[66]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\181.jpg"/>
+      <property name="path[248]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\369.jpg"/>
+      <property name="path[30]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\33.jpg"/>
+      <property name="path[212]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\333.jpg"/>
+      <property name="path[144]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\261.jpg"/>
+      <property name="path[26]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\29.jpg"/>
+      <property name="path[208]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\329.jpg"/>
+      <property name="path[104]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\219.jpg"/>
+      <property name="path[291]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\434.jpg"/>
+      <property name="numImages" value="390"/>
+      <property name="path[355]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\508.jpg"/>
+      <property name="path[287]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\430.jpg"/>
+      <property name="path[7]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\9.jpg"/>
+      <property name="path[251]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\372.jpg"/>
+      <property name="path[183]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\304.jpg"/>
+      <property name="path[315]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\468.jpg"/>
+      <property name="path[65]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\92.jpg"/>
+      <property name="path[247]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\368.jpg"/>
+      <property name="path[179]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\300.jpg"/>
+      <property name="path[211]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\332.jpg"/>
+      <property name="path[143]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\260.jpg"/>
+      <property name="path[25]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\28.jpg"/>
+      <property name="path[207]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\328.jpg"/>
+      <property name="path[139]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\255.jpg"/>
+      <property name="path[103]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\218.jpg"/>
+      <property name="path[290]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\433.jpg"/>
+      <property name="path[354]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\507.jpg"/>
+      <property name="path[286]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\429.jpg"/>
+      <property name="path[6]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\8.jpg"/>
+      <property name="path[250]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\371.jpg"/>
+      <property name="path[182]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\303.jpg"/>
+      <property name="path[314]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\467.jpg"/>
+      <property name="path[64]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\91.jpg"/>
+      <property name="path[246]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\367.jpg"/>
+      <property name="path[210]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\331.jpg"/>
+      <property name="path[178]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\299.jpg"/>
+      <property name="path[142]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\259.jpg"/>
+      <property name="path[24]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\27.jpg"/>
+      <property name="path[206]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\327.jpg"/>
+      <property name="path[138]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\254.jpg"/>
+      <property name="path[102]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\217.jpg"/>
+      <property name="path[389]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\542.jpg"/>
+      <property name="path[353]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\506.jpg"/>
+      <property name="path[285]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\428.jpg"/>
+      <property name="path[5]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\7.jpg"/>
+      <property name="path[181]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\302.jpg"/>
+      <property name="path[349]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\502.jpg"/>
+      <property name="path[99]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\214.jpg"/>
+      <property name="path[313]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\466.jpg"/>
+      <property name="path[63]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\90.jpg"/>
+      <property name="path[245]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\366.jpg"/>
+      <property name="path[177]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\298.jpg"/>
+      <property name="path[141]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\258.jpg"/>
+      <property name="path[309]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\452.jpg"/>
+      <property name="path[59]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\86.jpg"/>
+      <property name="path[23]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\26.jpg"/>
+      <property name="path[205]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\326.jpg"/>
+      <property name="path[137]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\253.jpg"/>
+      <property name="path[101]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\216.jpg"/>
+      <property name="path[19]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\22.jpg"/>
+      <property name="path[388]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\541.jpg"/>
+      <property name="path[352]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\505.jpg"/>
+      <property name="path[4]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\6.jpg"/>
+      <property name="path[284]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\427.jpg"/>
+      <property name="path[180]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\301.jpg"/>
+      <property name="path[348]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\501.jpg"/>
+      <property name="path[98]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\213.jpg"/>
+      <property name="path[312]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\465.jpg"/>
+      <property name="path[62]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\89.jpg"/>
+      <property name="path[244]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\365.jpg"/>
+      <property name="path[176]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\297.jpg"/>
+      <property name="path[140]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\257.jpg"/>
+      <property name="path[308]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\451.jpg"/>
+      <property name="path[58]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\85.jpg"/>
+      <property name="path[22]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\25.jpg"/>
+      <property name="path[204]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\325.jpg"/>
+      <property name="path[136]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\252.jpg"/>
+      <property name="path[100]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\215.jpg"/>
+      <property name="path[18]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\21.jpg"/>
+      <property name="path[387]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\540.jpg"/>
+      <property name="path[351]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\504.jpg"/>
+      <property name="path[3]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\5.jpg"/>
+      <property name="path[283]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\426.jpg"/>
+      <property name="path[347]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\500.jpg"/>
+      <property name="path[97]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\212.jpg"/>
+      <property name="path[311]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\454.jpg"/>
+      <property name="path[279]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\422.jpg"/>
+      <property name="path[61]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\88.jpg"/>
+      <property name="path[243]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\364.jpg"/>
+      <property name="path[175]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\296.jpg"/>
+      <property name="path[307]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\450.jpg"/>
+      <property name="path[57]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\84.jpg"/>
+      <property name="path[239]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\360.jpg"/>
+      <property name="path[21]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\24.jpg"/>
+      <property name="path[203]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\324.jpg"/>
+      <property name="path[135]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\251.jpg"/>
+      <property name="path[17]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\20.jpg"/>
+      <property name="path[386]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\539.jpg"/>
+      <property name="path[350]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\503.jpg"/>
+      <property name="path[2]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\4.jpg"/>
+      <property name="path[282]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\425.jpg"/>
+      <property name="path[346]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\499.jpg"/>
+      <property name="path[96]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\211.jpg"/>
+      <property name="path[310]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\453.jpg"/>
+      <property name="path[278]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\421.jpg"/>
+      <property name="path[60]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\87.jpg"/>
+      <property name="path[242]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\363.jpg"/>
+      <property name="path[174]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\295.jpg"/>
+      <property name="path[306]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\449.jpg"/>
+      <property name="path[56]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\83.jpg"/>
+      <property name="path[238]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\359.jpg"/>
+      <property name="path[20]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\23.jpg"/>
+      <property name="path[202]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\323.jpg"/>
+      <property name="path[134]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\249.jpg"/>
+      <property name="path[16]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\19.jpg"/>
+      <property name="path[385]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\538.jpg"/>
+      <property name="path[1]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\3.jpg"/>
+      <property name="path[281]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\424.jpg"/>
+      <property name="path[345]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\498.jpg"/>
+      <property name="path[95]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\210.jpg"/>
+      <property name="path[277]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\420.jpg"/>
+      <property name="path[241]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\362.jpg"/>
+      <property name="path[173]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\294.jpg"/>
+      <property name="path[305]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\448.jpg"/>
+      <property name="path[55]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\82.jpg"/>
+      <property name="path[237]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\358.jpg"/>
+      <property name="path[169]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\290.jpg"/>
+      <property name="path[201]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\322.jpg"/>
+      <property name="path[133]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\248.jpg"/>
+      <property name="path[15]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\18.jpg"/>
+      <property name="path[129]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\244.jpg"/>
+      <property name="path[384]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\537.jpg"/>
+      <property name="path[0]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\0.jpg"/>
+      <property name="path[280]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\423.jpg"/>
+      <property name="path[344]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\497.jpg"/>
+      <property name="path[94]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\209.jpg"/>
+      <property name="path[276]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\399.jpg"/>
+      <property name="path[240]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\361.jpg"/>
+      <property name="path[172]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\293.jpg"/>
+      <property name="path[304]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\447.jpg"/>
+      <property name="path[54]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\81.jpg"/>
+      <property name="path[236]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\357.jpg"/>
+      <property name="path[168]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\285.jpg"/>
+      <property name="path[200]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\321.jpg"/>
+      <property name="path[132]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\247.jpg"/>
+      <property name="path[14]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\17.jpg"/>
+      <property name="path[128]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\243.jpg"/>
+      <property name="path[383]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\536.jpg"/>
+      <property name="path[379]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\532.jpg"/>
+      <property name="path[343]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\496.jpg"/>
+      <property name="path[93]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\208.jpg"/>
+      <property name="path[275]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\398.jpg"/>
+      <property name="path[171]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\292.jpg"/>
+      <property name="path[339]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\492.jpg"/>
+      <property name="path[89]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\204.jpg"/>
+      <property name="path[303]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\446.jpg"/>
+      <property name="path[53]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\80.jpg"/>
+      <property name="path[235]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\356.jpg"/>
+      <property name="path[167]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\284.jpg"/>
+      <property name="path[131]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\246.jpg"/>
+      <property name="path[49]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\74.jpg"/>
+      <property name="path[13]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\16.jpg"/>
+      <property name="path[127]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\242.jpg"/>
+      <property name="path[382]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\535.jpg"/>
+      <property name="path[378]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\531.jpg"/>
+      <property name="path[342]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\495.jpg"/>
+      <property name="path[92]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\207.jpg"/>
+      <property name="path[274]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\397.jpg"/>
+      <property name="path[170]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\291.jpg"/>
+      <property name="path[338]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\491.jpg"/>
+      <property name="path[88]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\203.jpg"/>
+      <property name="path[302]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\445.jpg"/>
+      <property name="path[52]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\79.jpg"/>
+      <property name="path[234]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\355.jpg"/>
+      <property name="path[166]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\283.jpg"/>
+      <property name="path[130]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\245.jpg"/>
+      <property name="path[48]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\73.jpg"/>
+      <property name="path[12]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\15.jpg"/>
+      <property name="path[126]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\241.jpg"/>
+      <property name="path[381]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\534.jpg"/>
+      <property name="path[377]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\530.jpg"/>
+      <property name="path[341]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\494.jpg"/>
+      <property name="path[91]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\206.jpg"/>
+      <property name="path[273]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\396.jpg"/>
+      <property name="path[337]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\490.jpg"/>
+      <property name="path[87]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\202.jpg"/>
+      <property name="path[301]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\444.jpg"/>
+      <property name="path[269]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\392.jpg"/>
+      <property name="path[51]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\76.jpg"/>
+      <property name="path[233]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\354.jpg"/>
+      <property name="path[165]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\282.jpg"/>
+      <property name="path[47]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\72.jpg"/>
+      <property name="path[229]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\350.jpg"/>
+      <property name="path[11]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\14.jpg"/>
+      <property name="path[125]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\240.jpg"/>
+      <property name="path[380]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\533.jpg"/>
+      <property name="path[376]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\529.jpg"/>
+      <property name="path[340]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\493.jpg"/>
+      <property name="path[90]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\205.jpg"/>
+      <property name="path[272]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\395.jpg"/>
+      <property name="path[336]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\489.jpg"/>
+      <property name="path[86]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\201.jpg"/>
+      <property name="path[300]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\443.jpg"/>
+      <property name="path[268]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\391.jpg"/>
+      <property name="path[50]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\75.jpg"/>
+      <property name="path[232]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\353.jpg"/>
+      <property name="path[164]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\281.jpg"/>
+      <property name="path[46]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\71.jpg"/>
+      <property name="path[228]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\349.jpg"/>
+      <property name="path[10]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\13.jpg"/>
+      <property name="path[124]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\239.jpg"/>
+      <property name="path[375]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\528.jpg"/>
+      <property name="path[271]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\394.jpg"/>
+      <property name="path[335]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\488.jpg"/>
+      <property name="path[85]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\200.jpg"/>
+      <property name="path[267]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\390.jpg"/>
+      <property name="path[199]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\320.jpg"/>
+      <property name="path[231]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\352.jpg"/>
+      <property name="path[163]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\280.jpg"/>
+      <property name="path[45]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\70.jpg"/>
+      <property name="path[227]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\348.jpg"/>
+      <property name="path[159]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\276.jpg"/>
+      <property name="path[123]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\238.jpg"/>
+      <property name="index" value="0"/>
+      <property name="path[119]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\234.jpg"/>
+      <property name="path[374]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\527.jpg"/>
+      <property name="path[270]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\393.jpg"/>
+      <property name="path[334]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\487.jpg"/>
+      <property name="path[84]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\199.jpg"/>
+      <property name="path[266]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\389.jpg"/>
+      <property name="path[230]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\351.jpg"/>
+      <property name="path[198]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\319.jpg"/>
+      <property name="path[162]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\279.jpg"/>
+      <property name="path[44]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\69.jpg"/>
+      <property name="path[226]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\347.jpg"/>
+      <property name="path[158]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\275.jpg"/>
+      <property name="path[122]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\237.jpg"/>
+      <property name="path[118]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\233.jpg"/>
+      <property name="path[373]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\526.jpg"/>
+      <property name="path[369]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\522.jpg"/>
+      <property name="path[333]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\486.jpg"/>
+      <property name="path[83]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\198.jpg"/>
+      <property name="path[265]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\388.jpg"/>
+      <property name="path[197]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\318.jpg"/>
+      <property name="path[161]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\278.jpg"/>
+      <property name="path[329]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\482.jpg"/>
+      <property name="path[79]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\194.jpg"/>
+      <property name="path[43]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\68.jpg"/>
+      <property name="path[225]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\346.jpg"/>
+      <property name="path[157]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\274.jpg"/>
+      <property name="path[121]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\236.jpg"/>
+      <property name="path[39]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\64.jpg"/>
+      <property name="path[117]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\232.jpg"/>
+      <property name="path[372]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\525.jpg"/>
+      <property name="path[368]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\521.jpg"/>
+      <property name="path[332]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\485.jpg"/>
+      <property name="path[82]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\197.jpg"/>
+      <property name="path[264]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\387.jpg"/>
+      <property name="path[196]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\317.jpg"/>
+      <property name="path[160]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\277.jpg"/>
+      <property name="path[328]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\481.jpg"/>
+      <property name="path[78]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\193.jpg"/>
+      <property name="path[42]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\67.jpg"/>
+      <property name="path[224]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\345.jpg"/>
+      <property name="path[156]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\273.jpg"/>
+      <property name="path[120]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\235.jpg"/>
+      <property name="path[38]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\63.jpg"/>
+      <property name="path[116]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\231.jpg"/>
+      <property name="path[371]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\524.jpg"/>
+      <property name="path[367]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\520.jpg"/>
+      <property name="path[331]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\484.jpg"/>
+      <property name="path[299]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\442.jpg"/>
+      <property name="path[81]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\196.jpg"/>
+      <property name="path[263]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\386.jpg"/>
+      <property name="path[195]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\316.jpg"/>
+      <property name="path[327]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\480.jpg"/>
+      <property name="path[77]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\192.jpg"/>
+      <property name="path[259]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\380.jpg"/>
+      <property name="path[41]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\66.jpg"/>
+      <property name="path[223]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\344.jpg"/>
+      <property name="path[155]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\272.jpg"/>
+      <property name="path[37]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\62.jpg"/>
+      <property name="path[219]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\340.jpg"/>
+      <property name="path[115]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\230.jpg"/>
+      <property name="path[370]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\523.jpg"/>
+      <property name="path[366]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\519.jpg"/>
+      <property name="path[330]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\483.jpg"/>
+      <property name="path[298]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\441.jpg"/>
+      <property name="path[80]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\195.jpg"/>
+      <property name="path[262]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\385.jpg"/>
+      <property name="path[194]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\315.jpg"/>
+      <property name="path[326]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\479.jpg"/>
+      <property name="path[76]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\191.jpg"/>
+      <property name="path[258]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\379.jpg"/>
+      <property name="path[40]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\65.jpg"/>
+      <property name="path[222]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\343.jpg"/>
+      <property name="path[154]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\271.jpg"/>
+      <property name="path[36]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\61.jpg"/>
+      <property name="path[218]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\339.jpg"/>
+      <property name="path[114]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\229.jpg"/>
+      <property name="path[365]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\518.jpg"/>
+      <property name="path[297]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\440.jpg"/>
+      <property name="path[261]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\384.jpg"/>
+      <property name="path[193]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\314.jpg"/>
+      <property name="path[325]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\478.jpg"/>
+      <property name="path[75]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\190.jpg"/>
+      <property name="path[257]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\378.jpg"/>
+      <property name="path[189]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\310.jpg"/>
+      <property name="path[221]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\342.jpg"/>
+      <property name="path[153]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\270.jpg"/>
+      <property name="path[35]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\60.jpg"/>
+      <property name="path[217]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\338.jpg"/>
+      <property name="path[149]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\266.jpg"/>
+      <property name="path[113]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\228.jpg"/>
+      <property name="path[109]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\224.jpg"/>
+      <property name="path[364]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\517.jpg"/>
+      <property name="path[296]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\439.jpg"/>
+      <property name="path[260]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\381.jpg"/>
+      <property name="path[192]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\313.jpg"/>
+      <property name="path[324]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\477.jpg"/>
+      <property name="path[74]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\189.jpg"/>
+      <property name="path[256]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\377.jpg"/>
+      <property name="path[188]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\309.jpg"/>
+      <property name="path[220]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\341.jpg"/>
+      <property name="path[152]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\269.jpg"/>
+      <property name="path[34]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\59.jpg"/>
+      <property name="path[216]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\337.jpg"/>
+      <property name="path[148]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\265.jpg"/>
+      <property name="path[112]" value="C:\Users\Charlie\Desktop\FRC\Programing\Vision\RealFullField\227.jpg"/>
+    </grip:MultiImageFile>
+  </sources>
+  <steps>
+    <grip:Step name="CV resize">
+      <grip:Input step="0" socket="0"/>
+      <grip:Input step="0" socket="1"/>
+      <grip:Input step="0" socket="2">
+        <value>0.5</value>
+      </grip:Input>
+      <grip:Input step="0" socket="3">
+        <value>0.5</value>
+      </grip:Input>
+      <grip:Input step="0" socket="4">
+        <value>INTER_LINEAR</value>
+      </grip:Input>
+      <grip:Output step="0" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="HSL Threshold">
+      <grip:Input step="1" socket="0"/>
+      <grip:Input step="1" socket="1">
+        <value>
+          <double>63.12949640287769</double>
+          <double>95.15151515151514</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="1" socket="2">
+        <value>
+          <double>167.40107913669064</double>
+          <double>255.0</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="1" socket="3">
+        <value>
+          <double>55.03597122302158</double>
+          <double>160.55555555555554</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="1" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="Find Contours">
+      <grip:Input step="2" socket="0"/>
+      <grip:Input step="2" socket="1">
+        <value>false</value>
+      </grip:Input>
+      <grip:Output step="2" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="Filter Contours">
+      <grip:Input step="3" socket="0"/>
+      <grip:Input step="3" socket="1">
+        <value>400.0</value>
+      </grip:Input>
+      <grip:Input step="3" socket="2">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="3" socket="3">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="3" socket="4">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Input step="3" socket="5">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="3" socket="6">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Output step="3" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="Publish ContoursReport">
+      <grip:Input step="4" socket="0"/>
+      <grip:Input step="4" socket="1">
+        <value>myContoursReport</value>
+      </grip:Input>
+      <grip:Input step="4" socket="2">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="4" socket="3">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="4" socket="4">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="4" socket="5">
+        <value>true</value>
+      </grip:Input>
+      <grip:Input step="4" socket="6">
+        <value>true</value>
+      </grip:Input>
+    </grip:Step>
+  </steps>
+  <connections>
+    <grip:Connection>
+      <grip:Output step="2" socket="0" previewed="true"/>
+      <grip:Input step="3" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="0" socket="0" previewed="true"/>
+      <grip:Input step="1" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="false"/>
+      <grip:Input step="0" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="3" socket="0" previewed="true"/>
+      <grip:Input step="4" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="1" socket="0" previewed="true"/>
+      <grip:Input step="2" socket="0"/>
+    </grip:Connection>
+  </connections>
+  <settings>
+    <teamNumber>6027</teamNumber>
+    <publishAddress></publishAddress>
+    <deployAddress></deployAddress>
+  </settings>
+</grip:Pipeline>
