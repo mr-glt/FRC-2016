@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team6027.robot;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
@@ -13,6 +14,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,11 +33,18 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(1, 2);
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(3, 4);
 	CANTalon flyWheel = new CANTalon(0);
-	DigitalInput limitSwitch;
+	CANTalon dustPanTilt = new CANTalon(1);
 	Potentiometer dustPanAngle;
+	Gyro gyro;
+	DigitalInput upperLimit;
+	DigitalInput bottomLimit;
 	boolean buttonValue;
 	boolean locksButtonValue;
+	boolean locksButtonCloseValue;
 	boolean inverted;
+	boolean locksEngaded = false;
+	double adjTilt;
+	double Kp = 0.03;
 
 
 	//For Talon PID
@@ -48,14 +57,17 @@ public class Robot extends IterativeRobot {
     	chooser = new SendableChooser();
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
-        SmartDashboard.putData("Auto choices", chooser);
+        //SmartDashboard.putData("Auto choices", chooser);
         
         //Assign objects
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
     	stick = new Joystick(0); //Assign to a joystick on port 0
-    
+    	upperLimit = new DigitalInput(1);
+    	bottomLimit = new DigitalInput(2);
+    	
     	//Talaon PID Controler
-        flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+        /*
+    	flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
         flyWheel.reverseSensor(false);
         flyWheel.configNominalOutputVoltage(+0.0f, -0.0f);
         flyWheel.configPeakOutputVoltage(+12.0f, 0.0f);
@@ -64,18 +76,19 @@ public class Robot extends IterativeRobot {
         flyWheel.setP(0.22);
         flyWheel.setI(0); 
         flyWheel.setD(0);
+    */
     }
     
     public void autonomousInit() {
     	//Smart Dashboard Crap
-    	autoSelected = (String) chooser.getSelected();
+//    	autoSelected = (String) chooser.getSelected();
 //		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
-		System.out.println("Auto selected: " + autoSelected);
+//		System.out.println("Auto selected: " + autoSelected);
 		
     }
 
     public void autonomousPeriodic() {
-    	switch(autoSelected) {
+/*    	switch(autoSelected) {
     	case customAuto:
 
             break;
@@ -84,6 +97,11 @@ public class Robot extends IterativeRobot {
 
             break;
     	}
+  */
+    	gyro = new AnalogGyro(1);
+        double angle = gyro.getAngle(); // get current heading
+        SmartDashboard.putNumber("Error", angle);
+        merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
     }
 
 
@@ -93,16 +111,16 @@ public class Robot extends IterativeRobot {
     	double controllerRX = controller.getRawAxis(4) * 0.48;
 
     	//Drivetrain
-    	merlin.arcadeDrive(controllerLY, controllerRX);
+    	//merlin.arcadeDrive(controllerLY, controllerRX);
     	
     	//Shooter Wheel
         flyWheel.set(stick.getY());
     
     
         //Dust Pan Angle
-        dustPanAngle = new AnalogPotentiometer(0, 360, 30);
-        double degrees = dustPanAngle.get();
-        SmartDashboard.putNumber("Dust Pan Angle", degrees);
+        //dustPanAngle = new AnalogPotentiometer(0, 360, 30);
+        //double degrees = dustPanAngle.get();
+        //SmartDashboard.putNumber("Dust Pan Angle", degrees);
         
 
     }
@@ -121,27 +139,58 @@ public class Robot extends IterativeRobot {
     	//Drivetrain
     	merlin.arcadeDrive(controllerLY, controllerRX);
     	
+    	//Dust Pan Tilt
+    	
+    	adjTilt = stick.getY() * 0.25;
+    	if(upperLimit.get() == true){
+    		if(stick.getAxis(AxisType.kY) < 0){
+    			dustPanTilt.set(0); //Need to Change to Stick
+    		}
+    		else{
+    			SmartDashboard.putString("Upper Limit Switch", "Upper Limit Hit");
+    		}	
+    	}
+    	else{
+    		dustPanTilt.set(0); //Need to Change to Stick
+    	}
+    	
         //Dust Pan Angle
         dustPanAngle = new AnalogPotentiometer(0, 360, 30);
         double degrees = dustPanAngle.get();
         SmartDashboard.putNumber("Dust Pan Angle", degrees);
     	
+        if(locksEngaded == false){
+        	dustPanTilt.set(stick.getY());
+        }
+        else{
+        	SmartDashboard.putString("Movable Status", "LOCKES ENGADED CAN NOT MOVE!!!");
+        }
+    	
     	//Dust Pan Locks
     	locksButtonValue = stick.getRawButton(3);
     	if(locksButtonValue == true || locksEngaded == true){
     		dustPanSol.set(DoubleSolenoid.Value.kForward);
+    		locksEngaded = true;
     	}
     	else{
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    	}
+    	
+    	locksButtonCloseValue = stick.getRawButton(4);
+    	if(locksButtonCloseValue == true){
+    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    		locksEngaded = false;
     	}
     	
     	//Ball Plunger
     	buttonValue = stick.getRawButton(1);
     	if(buttonValue == true){
     		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Plunger Status", "Out");
     	}
     	else{
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Plunger Status", "Out");
     	}
     	
         //Shooter RPM
@@ -153,9 +202,8 @@ public class Robot extends IterativeRobot {
         _sb.append("\tspd:");
         _sb.append(flyWheel.getSpeed() );
         
-        if(stick.getRawButton(1)){
         	/* Speed mode */
-        	double targetSpeed = leftYstick * 1500.0; /* 1500 RPM in either direction */
+        	double targetSpeed = 1 * 1500.0; /* 1500 RPM in either direction */
         	flyWheel.changeControlMode(TalonControlMode.Speed);
         	flyWheel.set(targetSpeed); /* 1500 RPM in either direction */
 
@@ -164,11 +212,6 @@ public class Robot extends IterativeRobot {
             _sb.append(flyWheel.getClosedLoopError());
             _sb.append("\ttrg:");
             _sb.append(targetSpeed);
-        } else {
-        	/* Percent voltage mode */
-        	flyWheel.changeControlMode(TalonControlMode.PercentVbus);
-        	flyWheel.set(leftYstick);
-        }
 
         if(++_loops >= 10) {
         	_loops = 0;

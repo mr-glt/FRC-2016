@@ -702,3 +702,160 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 08:44:52.490
 !MESSAGE Installedjava
+!SESSION 2016-02-08 13:11:05.999 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-08 13:11:52.539
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:11:53.081
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:11:53.114
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:11:53.142
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:11:53.193
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:11:53.204
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:11:53.227
+!MESSAGE Installedjava
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:13:21.638
+!MESSAGE [edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@2a742ee4, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4e41b993, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@915c47b, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7108b12d, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7a80b2e6, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@394e0104, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@1e5f3c4a, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@2aea7775, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@5502f74c, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@1c8d9ac9, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7b57587e, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@2ffc9be, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4005e63a, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@30ae6721, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@717b4de2, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@d35d84a, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@626edbe0, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@213a2fe3, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@a05727b]
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-08 13:13:21.642
+!MESSAGE [edu.wpi.first.wpilib.plugins.core.wizards.Tag@29511cf9, edu.wpi.first.wpilib.plugins.core.wizards.Tag@3df473e8, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4dc10682, edu.wpi.first.wpilib.plugins.core.wizards.Tag@6cf633eb, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4de14c58, edu.wpi.first.wpilib.plugins.core.wizards.Tag@53141d3f, edu.wpi.first.wpilib.plugins.core.wizards.Tag@16a4e4c9, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4b90f49d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@c54e23b, edu.wpi.first.wpilib.plugins.core.wizards.Tag@7fdaeb6b, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4ee9daf5, edu.wpi.first.wpilib.plugins.core.wizards.Tag@291fba9, edu.wpi.first.wpilib.plugins.core.wizards.Tag@29ff84fa, edu.wpi.first.wpilib.plugins.core.wizards.Tag@156b31d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@168ffb0]
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2016-02-08 13:20:07.056
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:794)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete 'C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro\build.properties'.
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:135)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:310)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:390)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro\build.properties.
+Contains: Could not delete 'C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro'.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2016-02-08 13:20:07.058
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2016-02-08 13:20:07.058
+!MESSAGE Could not delete 'C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro\build.properties'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:135)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:310)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:390)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro\build.properties.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2016-02-08 13:20:07.058
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2016-02-08 13:20:07.058
+!MESSAGE Could not delete: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro\build.properties.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2016-02-08 13:20:07.058
+!MESSAGE Could not delete 'C:\Users\Charlie\Desktop\FRC-2016\Workspaces\Gyro'.
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:00:13.534
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:00:13.542
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:01:16.634
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W4\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:01:16.644
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:39:22.640
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:39:22.650
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:40:15.230
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:40:15.237
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:41:09.472
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:41:09.479
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:47:47.433
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:47:47.439
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:49:07.501
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:49:07.509
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:50:01.821
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 16:50:01.828
+!MESSAGE Targets: deploy, Mode: run

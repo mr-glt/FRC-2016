@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
 	boolean inverted;
 	boolean locksEngaded = false;
 	double adjTilt;
-	double Kp = 0.01;
+	double Kp = 0.03;
 
 
 	//For Talon PID
@@ -57,7 +57,7 @@ public class Robot extends IterativeRobot {
     	chooser = new SendableChooser();
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
-        SmartDashboard.putData("Auto choices", chooser);
+        //SmartDashboard.putData("Auto choices", chooser);
         
         //Assign objects
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
@@ -66,7 +66,8 @@ public class Robot extends IterativeRobot {
     	bottomLimit = new DigitalInput(2);
     	
     	//Talaon PID Controler
-        flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+        /*
+    	flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
         flyWheel.reverseSensor(false);
         flyWheel.configNominalOutputVoltage(+0.0f, -0.0f);
         flyWheel.configPeakOutputVoltage(+12.0f, 0.0f);
@@ -75,6 +76,7 @@ public class Robot extends IterativeRobot {
         flyWheel.setP(0.22);
         flyWheel.setI(0); 
         flyWheel.setD(0);
+    */
     }
     
     public void autonomousInit() {
@@ -98,8 +100,8 @@ public class Robot extends IterativeRobot {
   */
     	gyro = new AnalogGyro(1);
         double angle = gyro.getAngle(); // get current heading
+        SmartDashboard.putNumber("Error", angle);
         merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
-        Timer.delay(0.004);
     }
 
 
