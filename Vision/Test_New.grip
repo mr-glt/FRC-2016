@@ -1,0 +1,89 @@
+<grip:Pipeline>
+  <sources>
+    <grip:Camera>
+      <property name="deviceNumber" value="0"/>
+    </grip:Camera>
+  </sources>
+  <steps>
+    <grip:Step name="HSL Threshold">
+      <grip:Input step="0" socket="0"/>
+      <grip:Input step="0" socket="1">
+        <value>
+          <double>63.12949640287769</double>
+          <double>95.15151515151514</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="0" socket="2">
+        <value>
+          <double>167.4010791366906</double>
+          <double>255.0</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="0" socket="3">
+        <value>
+          <double>55.03597122302158</double>
+          <double>160.55555555555554</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="0" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="Find Contours">
+      <grip:Input step="1" socket="0"/>
+      <grip:Input step="1" socket="1">
+        <value>false</value>
+      </grip:Input>
+      <grip:Output step="1" socket="0" previewed="true"/>
+    </grip:Step>
+    <grip:Step name="Filter Contours">
+      <grip:Input step="2" socket="0"/>
+      <grip:Input step="2" socket="1">
+        <value>400.0</value>
+      </grip:Input>
+      <grip:Input step="2" socket="2">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="2" socket="3">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="2" socket="4">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Input step="2" socket="5">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="2" socket="6">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Input step="2" socket="7">
+        <value>
+          <int>0</int>
+          <int>100</int>
+        </value>
+      </grip:Input>
+      <grip:Output step="2" socket="0" previewed="true"/>
+    </grip:Step>
+  </steps>
+  <connections>
+    <grip:Connection>
+      <grip:Output step="0" socket="0" previewed="true"/>
+      <grip:Input step="1" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="1" socket="0" previewed="true"/>
+      <grip:Input step="2" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="false"/>
+      <grip:Input step="0" socket="0"/>
+    </grip:Connection>
+  </connections>
+  <settings>
+    <teamNumber>0</teamNumber>
+    <publishAddress>roborio-0-frc.local</publishAddress>
+    <deployAddress>192.168.1.130</deployAddress>
+    <deployDir>/home/lvuser</deployDir>
+    <deployUser>lvuser</deployUser>
+    <deployJavaHome>/usr/local/frc/JRE/</deployJavaHome>
+    <deployJvmOptions></deployJvmOptions>
+  </settings>
+</grip:Pipeline>

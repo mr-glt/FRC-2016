@@ -1028,3 +1028,89 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2016-02-08 20:24:26.867
 !MESSAGE Targets: deploy, Mode: run
+!SESSION 2016-02-09 17:59:55.062 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-09 18:00:06.231
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:07.085
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:07.121
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:07.128
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:07.144
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:07.153
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:07.502
+!MESSAGE Installedjava
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:12.668
+!MESSAGE [edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@3446ab40, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@500d4de8, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@43851574, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@344eaf7e, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@35d31e1c, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@f8b6743, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@644eed73, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@253a8bdb, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@834529e, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@5c519da4, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4f67d628, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@3ef2f84c, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@14f8fdae, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4414ee28, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@3533b614, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@1caa1866, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4fec93d0, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@2cea41ab, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4c1c134]
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 18:00:12.671
+!MESSAGE [edu.wpi.first.wpilib.plugins.core.wizards.Tag@486480e2, edu.wpi.first.wpilib.plugins.core.wizards.Tag@63bdf82d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@1da40ae8, edu.wpi.first.wpilib.plugins.core.wizards.Tag@1766b009, edu.wpi.first.wpilib.plugins.core.wizards.Tag@7be95197, edu.wpi.first.wpilib.plugins.core.wizards.Tag@7719b257, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4a571516, edu.wpi.first.wpilib.plugins.core.wizards.Tag@681302ad, edu.wpi.first.wpilib.plugins.core.wizards.Tag@594793d1, edu.wpi.first.wpilib.plugins.core.wizards.Tag@63f609a4, edu.wpi.first.wpilib.plugins.core.wizards.Tag@11fb4f69, edu.wpi.first.wpilib.plugins.core.wizards.Tag@618d2191, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4b1ef6a, edu.wpi.first.wpilib.plugins.core.wizards.Tag@57596d71, edu.wpi.first.wpilib.plugins.core.wizards.Tag@1c12f0f4]
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 18:00:34.423
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\Intermediate Vision\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 18:00:34.427
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:15:12.622
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:15:12.627
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 19:36:22.730
+!MESSAGE [edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@3ebbe1d9, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7cead0f2, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7bf42cfa, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@26df5b5e, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@470bd375, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@6d4ce626, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@37859489, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@6bdc2c8c, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@72d5daf9, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@78227f53, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@63989d02, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@692a65b1, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@35f4787f, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@5ec75175, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7910a722, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@432d525c, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@550cfdc6, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@312452eb, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4d71da5a]
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-09 19:36:22.733
+!MESSAGE [edu.wpi.first.wpilib.plugins.core.wizards.Tag@6467ce1a, edu.wpi.first.wpilib.plugins.core.wizards.Tag@5637ed9d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@45174eba, edu.wpi.first.wpilib.plugins.core.wizards.Tag@6f7ef48, edu.wpi.first.wpilib.plugins.core.wizards.Tag@5cbae692, edu.wpi.first.wpilib.plugins.core.wizards.Tag@3588b39d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4a154908, edu.wpi.first.wpilib.plugins.core.wizards.Tag@732172ad, edu.wpi.first.wpilib.plugins.core.wizards.Tag@7824842d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@840d4ef, edu.wpi.first.wpilib.plugins.core.wizards.Tag@687d91e6, edu.wpi.first.wpilib.plugins.core.wizards.Tag@10b1225e, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4c68d989, edu.wpi.first.wpilib.plugins.core.wizards.Tag@42019b47, edu.wpi.first.wpilib.plugins.core.wizards.Tag@46f7d040]
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:37:46.423
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:37:46.425
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:44:03.092
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:44:03.095
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:44:13.785
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:44:13.788
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:46:45.519
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:46:45.522
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:48:01.755
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-09 19:48:01.758
+!MESSAGE Targets: deploy, Mode: run

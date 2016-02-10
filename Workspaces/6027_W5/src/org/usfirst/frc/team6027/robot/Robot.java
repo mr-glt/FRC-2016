@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.Compressor;
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 	ADXRS450_Gyro gyro;
 	DigitalInput upperLimit;
 	DigitalInput bottomLimit;
+	CameraServer server;
 	boolean buttonValue;
 	boolean locksButtonValue;
 	boolean locksButtonCloseValue;
@@ -66,6 +68,12 @@ public class Robot extends IterativeRobot {
     	bottomLimit = new DigitalInput(2);
     	gyro = new ADXRS450_Gyro();
     	dustPanAngle = new AnalogPotentiometer(0, 210, -10);
+    	//Camera
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture("cam0");
+    	
     	//Talaon PID Controler
        /*
     	flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
@@ -120,11 +128,34 @@ public class Robot extends IterativeRobot {
     
     
         //Dust Pan Angle
-        
         double degrees = dustPanAngle.get();
         SmartDashboard.putNumber("Dust Pan Angle", degrees);
         
-
+    	//Ball Plunger
+    	buttonValue = stick.getRawButton(1);
+    	if(buttonValue == true){
+    		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Plunger Status", "Out");
+    	}
+    	else{
+    		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Plunger Status", "In");
+    	}
+    	
+    	//Dust Pan Tilt
+    	adjTilt = stick.getY() * 0.25;
+    	if(upperLimit.get() == false){
+    		if(stick.getAxis(AxisType.kY) < 0){
+    			dustPanTilt.set(0); //Need to Change to Stick
+    		}
+    		else{
+    			SmartDashboard.putString("Upper Limit Switch", "Upper Limit Hit");
+    		}	
+    	}
+    	else{
+    		dustPanTilt.set(0); //Need to Change to Stick
+    		SmartDashboard.putString("Upper Limit Switch", "Free");
+    	}
     }
     
 
@@ -142,7 +173,6 @@ public class Robot extends IterativeRobot {
     	//merlin.arcadeDrive(controllerLY, controllerRX);
     	
     	//Dust Pan Tilt
-    	
     	adjTilt = stick.getY() * 0.25;
     	if(upperLimit.get() == true){
     		if(stick.getAxis(AxisType.kY) < 0){
