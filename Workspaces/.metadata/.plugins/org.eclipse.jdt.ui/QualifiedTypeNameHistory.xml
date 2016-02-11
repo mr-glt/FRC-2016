@@ -12,5 +12,6 @@
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.interfaces.Gyro"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.AnalogGyro"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.ADXRS450_Gyro"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.networktables.NetworkTable"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 </qualifiedTypeNameHistroy>

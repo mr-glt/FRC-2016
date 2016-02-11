@@ -1246,3 +1246,208 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 13:11:42.493
 !MESSAGE Targets: simulate, Mode: run
+!SESSION 2016-02-10 19:47:21.624 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-10 19:47:33.612
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:34.470
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:34.518
+!MESSAGE Install necessary for tools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:36.283
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:36.292
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:36.324
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:36.337
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 19:47:36.359
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:20:01.589
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:20:01.592
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:21:44.925
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:21:44.928
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:56:44.949
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:56:44.951
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:59:03.786
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 20:59:03.789
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:00:33.994
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:00:33.996
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:01:17.101
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:01:17.105
+!MESSAGE Targets: simulate, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:01:34.720
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:01:34.723
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:03:24.226
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:03:24.229
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:06:01.667
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:06:01.670
+!MESSAGE Targets: deploy, Mode: run
+!SESSION 2016-02-10 21:06:39.713 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 21:06:48.922
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 21:06:48.927
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 21:06:48.941
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 21:06:48.952
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 21:06:48.959
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-10 21:06:48.963
+!MESSAGE Installedjava
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-10 21:06:49.197
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:07:29.211
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:07:29.214
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:10:52.535
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:10:52.537
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:12:09.905
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:12:09.908
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:12:27.258
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:12:27.260
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:14:06.200
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:14:06.203
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:15:19.568
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:15:19.571
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:30:07.095
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:30:07.097
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:30:17.057
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:30:17.059
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:30:58.792
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:30:58.794
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:32:23.018
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:32:23.020
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:55:21.856
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:55:21.858
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:56:54.144
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:56:54.147
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:58:17.593
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 21:58:17.595
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 22:01:08.106
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC\Programing\FRC-2016\Workspaces\6027_W5\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-10 22:01:08.109
+!MESSAGE Targets: deploy, Mode: run

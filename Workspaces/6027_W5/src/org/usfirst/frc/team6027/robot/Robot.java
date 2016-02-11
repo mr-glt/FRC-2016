@@ -17,13 +17,15 @@ import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
     //Smart Dashboard Crap
-	final String defaultAuto = "Default";
-    final String customAuto = "My Auto";
+	final String lowbarAuto = "Lowbar";
+	final String roughAuto = "Rough Tor";
+	final String testAuto = "Test";
     String autoSelected;
     SendableChooser chooser;
 	
@@ -39,7 +41,8 @@ public class Robot extends IterativeRobot {
 	ADXRS450_Gyro gyro;
 	DigitalInput upperLimit;
 	DigitalInput bottomLimit;
-	CameraServer server;
+	//CameraServer server;
+	NetworkTable table;
 	boolean buttonValue;
 	boolean locksButtonValue;
 	boolean locksButtonCloseValue;
@@ -57,23 +60,25 @@ public class Robot extends IterativeRobot {
         
     	//Smart Dashboard Crap
     	chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", defaultAuto);
-        chooser.addObject("My Auto", customAuto);
+        chooser.addDefault("Test", testAuto);
+        chooser.addObject("Lowbar", lowbarAuto);
+        chooser.addObject("Rough", roughAuto);
         SmartDashboard.putData("Auto choices", chooser);
         
         //Assign objects
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
     	stick = new Joystick(0); //Assign to a joystick on port 0
-    	upperLimit = new DigitalInput(1);
+    	upperLimit = new DigitalInput(9);
     	bottomLimit = new DigitalInput(2);
     	gyro = new ADXRS450_Gyro();
     	dustPanAngle = new AnalogPotentiometer(0, 210, -10);
     	//Camera
-        server = CameraServer.getInstance();
+        /*
+    	server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
         server.startAutomaticCapture("cam0");
-    	
+    	*/
     	//Talaon PID Controler
        /*
     	flyWheel.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
@@ -91,23 +96,30 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	//Smart Dashboard Crap
     	autoSelected = (String) chooser.getSelected();
-		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
+		autoSelected = SmartDashboard.getString("Auto Selector", testAuto);
+		autoSelected = SmartDashboard.getString("Auto Selector", lowbarAuto);
 		System.out.println("Auto selected: " + autoSelected);
 		
     }
 
     public void autonomousPeriodic() {
     	switch(autoSelected) {
-    	case customAuto:
-
-            break;
-    	case defaultAuto:
+    	case lowbarAuto:
+    		//Put Code Here
+            
+    		break;
+    	case testAuto:
     	default:
             double angle = gyro.getAngle(); // get current heading
 
             SmartDashboard.putNumber("Error", (angle*Kp));
             merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
             break;
+   
+    	case roughAuto:
+    		//Put Code Here
+    		
+    		break;
     	}
     }
 
@@ -121,7 +133,7 @@ public class Robot extends IterativeRobot {
     	//Drivetrain
     	//merlin.arcadeDrive(controllerLY, controllerRX);
     	double angle = gyro.getAngle();
-    	if(controllerRX < -0.05 && controllerRX > 0.05){
+    	if(controllerRX < -0.1 && controllerRX > 0.1){
     		merlin.arcadeDrive(controllerLY, controllerRX);
     		SmartDashboard.putString("Drive Mode", "Unaided");
     	}
@@ -152,17 +164,44 @@ public class Robot extends IterativeRobot {
     	//Dust Pan Tilt
     	adjTilt = stick.getY() * 0.25;
     	if(upperLimit.get() == false){
-    		if(stick.getAxis(AxisType.kY) < 0){
-    			dustPanTilt.set(0); //Need to Change to Stick
+    		if(stick.getY() < -0.1){
+    			dustPanTilt.set(adjTilt); //Need to Change to Stick
+    			SmartDashboard.putString("Upper Limit Switch", "it");
+    			SmartDashboard.putString("Down Override", "True");
+    			SmartDashboard.putString("Dust Pan Status", "Movable Down");
     		}
     		else{
-    			SmartDashboard.putString("Upper Limit Switch", "Upper Limit Hit");
+    			SmartDashboard.putString("Upper Limit Switch", "Hit");
+    			SmartDashboard.putString("Down Override", "False");
+    			SmartDashboard.putString("Dust Pan Status", "Locked");
     		}	
     	}
     	else{
-    		dustPanTilt.set(0); //Need to Change to Stick
-    		SmartDashboard.putString("Upper Limit Switch", "Free");
+    		if(bottomLimit.get() == false){
+        		if(stick.getY() > 0.1){
+        			dustPanTilt.set(adjTilt); //Need to Change to Stick
+        			SmartDashboard.putString("Bottom Limit Switch", "Hit");
+        			SmartDashboard.putString("Up Override", "True");
+        			SmartDashboard.putString("Dust Pan Status", "Movable Up");
+        		}
+        		else{
+        			SmartDashboard.putString("Bottom Limit Switch", "Hit");
+        			SmartDashboard.putString("Up Override", "False");
+        			SmartDashboard.putString("Dust Pan Status", "Locked");
+        		}
+    		}
+    		else{
+        		dustPanTilt.set(adjTilt); //Need to Change to Stick
+        		SmartDashboard.putString("Upper Limit Switch", "Free");
+        		SmartDashboard.putString("Bottom Limit Switch", "Free");
+        		SmartDashboard.putString("Down Override", "NA");
+        		SmartDashboard.putString("up Override", "NA");
+        		SmartDashboard.putString("Dust Pan Status", "Movable");
+    		}
+    		
+
     	}
+    	
     	//Dust Pan Locks
     	locksButtonValue = stick.getRawButton(3);
     	if(locksButtonValue == true || locksEngaded == true){
