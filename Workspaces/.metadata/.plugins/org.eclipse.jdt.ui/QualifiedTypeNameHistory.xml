@@ -9,8 +9,8 @@
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.CANTalon.TalonControlMode"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Joystick.AxisType"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.CANTalon.FeedbackDevice"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.interfaces.Gyro"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.AnalogGyro"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.ADXRS450_Gyro"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 </qualifiedTypeNameHistroy>

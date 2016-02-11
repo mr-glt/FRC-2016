@@ -59,7 +59,7 @@ public class Robot extends IterativeRobot {
     	chooser = new SendableChooser();
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
-        //SmartDashboard.putData("Auto choices", chooser);
+        SmartDashboard.putData("Auto choices", chooser);
         
         //Assign objects
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
@@ -90,39 +90,46 @@ public class Robot extends IterativeRobot {
     
     public void autonomousInit() {
     	//Smart Dashboard Crap
-//    	autoSelected = (String) chooser.getSelected();
-//		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
-//		System.out.println("Auto selected: " + autoSelected);
+    	autoSelected = (String) chooser.getSelected();
+		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
+		System.out.println("Auto selected: " + autoSelected);
 		
     }
 
     public void autonomousPeriodic() {
-/*    	switch(autoSelected) {
+    	switch(autoSelected) {
     	case customAuto:
 
             break;
     	case defaultAuto:
     	default:
+            double angle = gyro.getAngle(); // get current heading
 
+            SmartDashboard.putNumber("Error", (angle*Kp));
+            merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
             break;
     	}
-  */
-    	
-        double angle = gyro.getAngle(); // get current heading
-
-        SmartDashboard.putNumber("Error", (angle*Kp));
-        merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
     }
 
 
     public void teleopPeriodic() {
     	//Vars
-    	//double controllerLY = controller.getRawAxis(1) * 0.56;
-    	//double controllerRX = controller.getRawAxis(4) * 0.48;
+    	/*
+    	double controllerLY = controller.getRawAxis(1) * 0.56;
+    	double controllerRX = controller.getRawAxis(4) * 0.48;
 
     	//Drivetrain
     	//merlin.arcadeDrive(controllerLY, controllerRX);
-    	
+    	double angle = gyro.getAngle();
+    	if(controllerRX < -0.05 && controllerRX > 0.05){
+    		merlin.arcadeDrive(controllerLY, controllerRX);
+    		SmartDashboard.putString("Drive Mode", "Unaided");
+    	}
+    	else{
+    		merlin.drive(controllerLY, -angle*Kp); // drive towards heading 0
+    		SmartDashboard.putString("Drive Mode", "Aided");
+    	}
+    	*/
     	//Shooter Wheel
         flyWheel.set(stick.getY());
     
@@ -156,6 +163,23 @@ public class Robot extends IterativeRobot {
     		dustPanTilt.set(0); //Need to Change to Stick
     		SmartDashboard.putString("Upper Limit Switch", "Free");
     	}
+    	//Dust Pan Locks
+    	locksButtonValue = stick.getRawButton(3);
+    	if(locksButtonValue == true || locksEngaded == true){
+    		dustPanSol.set(DoubleSolenoid.Value.kForward);
+    		locksEngaded = true;
+    	}
+    	else{
+    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    	}
+    	
+    	locksButtonCloseValue = stick.getRawButton(4);
+    	if(locksButtonCloseValue == true){
+    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    		locksEngaded = false;
+    	}
+    	SmartDashboard.putBoolean("Locks Status", locksEngaded);
+    	
     }
     
 
