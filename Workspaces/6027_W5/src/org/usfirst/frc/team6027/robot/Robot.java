@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team6027.robot;
 
+import java.io.IOException;
+import java.util.Arrays;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
@@ -43,6 +46,7 @@ public class Robot extends IterativeRobot {
 	DigitalInput bottomLimit;
 	//CameraServer server;
 	NetworkTable table;
+	private final NetworkTable grip = NetworkTable.getTable("grip");
 	boolean buttonValue;
 	boolean locksButtonValue;
 	boolean locksButtonCloseValue;
@@ -91,7 +95,15 @@ public class Robot extends IterativeRobot {
         flyWheel.setI(0); 
         flyWheel.setD(0);
   */
+    //Grip Test Code
+        try {
+            new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        table = NetworkTable.getTable("GRIP/myContoursReport");
     }
+    
     
     public void autonomousInit() {
     	//Smart Dashboard Crap
@@ -219,7 +231,15 @@ public class Robot extends IterativeRobot {
     	}
     	SmartDashboard.putBoolean("Locks Status", locksEngaded);
     	
-    }
+    	//Grip Test Code
+        double defaultValue[] = new double[0];
+        double[] visionX = table.getNumberArray("centerX", defaultValue);
+        double[] visionY = table.getNumberArray("centerY", defaultValue);
+        double extractedX = visionX[0];
+        double extractedY = visionY[0];
+        SmartDashboard.putNumber("X Value of Box", extractedX);
+        SmartDashboard.putNumber("Y Value of Box", extractedY);
+    }	
     
 
     public void testPeriodic() {
