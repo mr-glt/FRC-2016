@@ -46,14 +46,17 @@ public class Robot extends IterativeRobot {
 	DigitalInput bottomLimit;
 	//CameraServer server;
 	NetworkTable table;
+	int atonLoopCounter;
 	private final NetworkTable grip = NetworkTable.getTable("grip");
 	boolean buttonValue;
 	boolean locksButtonValue;
 	boolean locksButtonCloseValue;
 	boolean inverted;
 	boolean locksEngaded = false;
+	boolean aimAssist;
 	double adjTilt;
 	double Kp = 0.03;
+	double xCord;
 
 
 	//For Talon PID
@@ -96,7 +99,8 @@ public class Robot extends IterativeRobot {
         flyWheel.setD(0);
   */
     //Grip Test Code
-        try {
+        
+    	try {
             new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -115,6 +119,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
+    	/*
     	switch(autoSelected) {
     	case lowbarAuto:
     		//Put Code Here
@@ -122,17 +127,41 @@ public class Robot extends IterativeRobot {
     		break;
     	case testAuto:
     	default:
+            */
             double angle = gyro.getAngle(); // get current heading
-
+        	if(atonLoopCounter < 200) //About 50 loops per second
+    		{
+        		SmartDashboard.putNumber("Error", (angle*Kp));
+        		SmartDashboard.putString("Aton Status", "Driving Forward");
+        		merlin.drive(-0.3, -angle*Kp);
+    			atonLoopCounter++;
+    		} 
+        	else {
+    			merlin.drive(0.0, 0.0);
+    		}
+            if(atonLoopCounter > 199 && atonLoopCounter < 230){
+            	SmartDashboard.putString("Aton Status", "Programed Rotate");
+            	merlin.drive(0.0, 0.3);
+            	atonLoopCounter++;
+            }
+            if(atonLoopCounter > 229 && atonLoopCounter < 410){
+            	SmartDashboard.putString("Aton Status", "Auto Aim");
+            	atonLoopCounter++;
+            }
+            if(atonLoopCounter > 409){
+            	atonLoopCounter = 0;
+            }
+            /*
             SmartDashboard.putNumber("Error", (angle*Kp));
             merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
-            break;
+            */
+            //break;
    
-    	case roughAuto:
+    	//case roughAuto:
     		//Put Code Here
     		
-    		break;
-    	}
+    	//	break;
+    	//}
     }
 
 
@@ -154,10 +183,13 @@ public class Robot extends IterativeRobot {
     		SmartDashboard.putString("Drive Mode", "Aided");
     	}
     	*/
-    	//Shooter Wheel
+    	//Temp Shooter Wheel
         flyWheel.set(stick.getY());
     
-    
+    	//Compressor
+    	//Compressor c = new Compressor(0);
+    	//c.setClosedLoopControl(true);
+        
         //Dust Pan Angle
         double degrees = dustPanAngle.get();
         SmartDashboard.putNumber("Dust Pan Angle", degrees);
@@ -171,47 +203,6 @@ public class Robot extends IterativeRobot {
     	else{
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Plunger Status", "In");
-    	}
-    	
-    	//Dust Pan Tilt
-    	adjTilt = stick.getY() * 0.25;
-    	if(upperLimit.get() == false){
-    		if(stick.getY() < -0.1){
-    			dustPanTilt.set(adjTilt); //Need to Change to Stick
-    			SmartDashboard.putString("Upper Limit Switch", "it");
-    			SmartDashboard.putString("Down Override", "True");
-    			SmartDashboard.putString("Dust Pan Status", "Movable Down");
-    		}
-    		else{
-    			SmartDashboard.putString("Upper Limit Switch", "Hit");
-    			SmartDashboard.putString("Down Override", "False");
-    			SmartDashboard.putString("Dust Pan Status", "Locked");
-    		}	
-    	}
-    	else{
-    		if(bottomLimit.get() == false){
-        		if(stick.getY() > 0.1){
-        			dustPanTilt.set(adjTilt); //Need to Change to Stick
-        			SmartDashboard.putString("Bottom Limit Switch", "Hit");
-        			SmartDashboard.putString("Up Override", "True");
-        			SmartDashboard.putString("Dust Pan Status", "Movable Up");
-        		}
-        		else{
-        			SmartDashboard.putString("Bottom Limit Switch", "Hit");
-        			SmartDashboard.putString("Up Override", "False");
-        			SmartDashboard.putString("Dust Pan Status", "Locked");
-        		}
-    		}
-    		else{
-        		dustPanTilt.set(adjTilt); //Need to Change to Stick
-        		SmartDashboard.putString("Upper Limit Switch", "Free");
-        		SmartDashboard.putString("Bottom Limit Switch", "Free");
-        		SmartDashboard.putString("Down Override", "NA");
-        		SmartDashboard.putString("up Override", "NA");
-        		SmartDashboard.putString("Dust Pan Status", "Movable");
-    		}
-    		
-
     	}
     	
     	//Dust Pan Locks
@@ -231,14 +222,82 @@ public class Robot extends IterativeRobot {
     	}
     	SmartDashboard.putBoolean("Locks Status", locksEngaded);
     	
+    	//Dust Pan Tilt
+    	adjTilt = stick.getY() * 0.25;
+	    if(locksEngaded == false){	
+    		if(upperLimit.get() == false){
+	    		if(stick.getY() < -0.1){
+	    			dustPanTilt.set(adjTilt); //Need to Change to Stick
+	    			SmartDashboard.putString("Upper Limit Switch", "it");
+	    			SmartDashboard.putString("Down Override", "True");
+	    			SmartDashboard.putString("Dust Pan Status", "Movable Down");
+	    		}
+	    		else{
+	    			SmartDashboard.putString("Upper Limit Switch", "Hit");
+	    			SmartDashboard.putString("Down Override", "False");
+	    			SmartDashboard.putString("Dust Pan Status", "Locked");
+	    		}	
+	    	}
+	    	else{
+	    		if(bottomLimit.get() == false){
+	        		if(stick.getY() > 0.1){
+	        			dustPanTilt.set(adjTilt); //Need to Change to Stick
+	        			SmartDashboard.putString("Bottom Limit Switch", "Hit");
+	        			SmartDashboard.putString("Up Override", "True");
+	        			SmartDashboard.putString("Dust Pan Status", "Movable Up");
+	        		}
+	        		else{
+	        			SmartDashboard.putString("Bottom Limit Switch", "Hit");
+	        			SmartDashboard.putString("Up Override", "False");
+	        			SmartDashboard.putString("Dust Pan Status", "Locked");
+	        		}
+	    		}
+	    		else{
+	        		dustPanTilt.set(adjTilt); //Need to Change to Stick
+	        		SmartDashboard.putString("Upper Limit Switch", "Free");
+	        		SmartDashboard.putString("Bottom Limit Switch", "Free");
+	        		SmartDashboard.putString("Down Override", "NA");
+	        		SmartDashboard.putString("Up Override", "NA");
+	        		SmartDashboard.putString("Dust Pan Status", "Movable");
+	    		}
+	    		
+
+	    	}
+	    }
+	    else{
+	    	
+	    }
+
     	//Grip Test Code
-        double defaultValue[] = new double[0];
+        
+    	double defaultValue[] = new double[0];
         double[] visionX = table.getNumberArray("centerX", defaultValue);
         double[] visionY = table.getNumberArray("centerY", defaultValue);
-        double extractedX = visionX[0];
-        double extractedY = visionY[0];
-        SmartDashboard.putNumber("X Value of Box", extractedX);
-        SmartDashboard.putNumber("Y Value of Box", extractedY);
+       for(Double visionXCord : visionX){
+    		   SmartDashboard.putNumber("X Value of Box", visionXCord);
+    		   xCord = visionXCord;
+       }
+       for(Double visionYCord : visionY){
+		   SmartDashboard.putNumber("Y Value of Box", visionYCord);
+       } 
+       aimAssist = stick.getRawButton(7);
+       //Aim Assist
+       if(aimAssist == true){
+    	   if(xCord < 75){
+    		   merlin.drive(0, 0.2);
+    		   SmartDashboard.putString("Aim Assist", "Too Far Left, Moving Right");
+    	   }
+    	   if(xCord > 85){
+    		   merlin.drive(0, -0.2);
+    		   SmartDashboard.putString("Aim Assist", "Too Far Right, Moving Left");
+    	   }
+    	   if(!(xCord <70) && !(xCord >90)){
+    		   SmartDashboard.putString("Aim Assist", "On Target");
+    	   }
+       }
+       else{
+    	   SmartDashboard.putString("Aim Assist", "Off");
+       }
     }	
     
 
@@ -254,58 +313,6 @@ public class Robot extends IterativeRobot {
     	
     	//Drivetrain
     	//merlin.arcadeDrive(controllerLY, controllerRX);
-    	
-    	//Dust Pan Tilt
-    	adjTilt = stick.getY() * 0.25;
-    	if(upperLimit.get() == true){
-    		if(stick.getAxis(AxisType.kY) < 0){
-    			dustPanTilt.set(0); //Need to Change to Stick
-    		}
-    		else{
-    			SmartDashboard.putString("Upper Limit Switch", "Upper Limit Hit");
-    		}	
-    	}
-    	else{
-    		dustPanTilt.set(0); //Need to Change to Stick
-    	}
-    	
-        //Dust Pan Angle
-        double degrees = dustPanAngle.get();
-        SmartDashboard.putNumber("Dust Pan Angle", degrees);
-    	
-        if(locksEngaded == false){
-        	dustPanTilt.set(stick.getY());
-        }
-        else{
-        	SmartDashboard.putString("Movable Status", "LOCKES ENGADED CAN NOT MOVE!!!");
-        }
-    	
-    	//Dust Pan Locks
-    	locksButtonValue = stick.getRawButton(3);
-    	if(locksButtonValue == true || locksEngaded == true){
-    		dustPanSol.set(DoubleSolenoid.Value.kForward);
-    		locksEngaded = true;
-    	}
-    	else{
-    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-    	}
-    	
-    	locksButtonCloseValue = stick.getRawButton(4);
-    	if(locksButtonCloseValue == true){
-    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-    		locksEngaded = false;
-    	}
-    	
-    	//Ball Plunger
-    	buttonValue = stick.getRawButton(1);
-    	if(buttonValue == true){
-    		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
-    		SmartDashboard.putString("Plunger Status", "Out");
-    	}
-    	else{
-    		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
-    		SmartDashboard.putString("Plunger Status", "Out");
-    	}
     	
         //Shooter RPM
         double leftYstick = stick.getAxis(AxisType.kY);
