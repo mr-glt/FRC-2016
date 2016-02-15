@@ -48,6 +48,7 @@ public class Robot extends IterativeRobot {
 	boolean aimAssist;
 	boolean spinShooterwheelForward;
 	boolean spinShooterwheelBackward;
+	boolean turnDone = false;
 	double adjTilt;
 	double Kp = 0.03;
 	double xCord;
@@ -77,7 +78,8 @@ public class Robot extends IterativeRobot {
             e.printStackTrace();
         }
         table = NetworkTable.getTable("GRIP/myContoursReport");
-    
+        //Gyro
+        gyro.calibrate();
     }
     
     
@@ -101,22 +103,43 @@ public class Robot extends IterativeRobot {
         	//c.setClosedLoopControl(true);
     		
     		double angle = gyro.getAngle(); // get current heading
-        	if(atonLoopCounter < 200) //About 50 loops per second
+    		SmartDashboard.putNumber("Angle: ", angle);
+    		
+
+    		
+    		if(atonLoopCounter < 200) //About 50 loops per second
     		{
         		SmartDashboard.putNumber("Error", (angle*Kp));
         		SmartDashboard.putString("Aton Status", "Driving Forward");
-        		merlin.drive(-0.2, -angle*Kp);
+        		driveSchedulerX = -angle*Kp;
+        		driveSchedulerY = 0.45;
     			atonLoopCounter++;
     		} 
-        	else {
-    			merlin.drive(0.0, 0.0);
-    		}
-            if(atonLoopCounter > 199 && atonLoopCounter < 230){
+            if(atonLoopCounter > 199 && turnDone == false){
+        		if(angle < 180){
+            		driveSchedulerX = -0.5;
+            		driveSchedulerY = 0.0;
+        		}
+        		if(angle > 180){
+        			driveSchedulerX = 0.5;
+        			driveSchedulerY = 0.0;
+        		}
+        		if(angle > 179 && angle < 181){
+                		driveSchedulerX = 0.0;
+                		driveSchedulerY = 0.0;
+                		turnDone = true;
+                		
+        		}
+        	
+            }
+    		if(atonLoopCounter < 300 && turnDone == true){
             	SmartDashboard.putString("Aton Status", "Programed Rotate");
-            	merlin.drive(0.0, 0.15);
+            	driveSchedulerY = 0.45;
+            	driveSchedulerX = 0.0;
             	atonLoopCounter++;
             }
-            if(atonLoopCounter > 229 && atonLoopCounter < 410){
+/*
+            if(atonLoopCounter > 399 && atonLoopCounter < 410){
             	SmartDashboard.putString("Aton Status", "Auto Aim");
              	   if(xCord < 75){
              		   merlin.drive(0.0, 0.2);
@@ -132,10 +155,15 @@ public class Robot extends IterativeRobot {
              	   }
             	atonLoopCounter++;
             }
-            if(atonLoopCounter > 409){
+        */
+            if(atonLoopCounter > 399){
+            	driveSchedulerX = 0.0;
             	SmartDashboard.putString("Aton Status", "Done");
+            	atonLoopCounter = 0;
             	break;
             }
+          
+            merlin.arcadeDrive(driveSchedulerY, driveSchedulerX);
             /*
             SmartDashboard.putNumber("Error", (angle*Kp));
             merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
@@ -149,10 +177,11 @@ public class Robot extends IterativeRobot {
     	//Compressor
     	//Compressor c = new Compressor(0);
     	//c.setClosedLoopControl(true);
-    	
+    	double angle = gyro.getAngle(); // get current heading
+    	SmartDashboard.putNumber("Angle: ", angle);
     	//Drivetrain
-    	double controllerLY = controller.getRawAxis(2) * -0.56;
-    	double controllerRX = controller.getRawAxis(4) * -0.48;
+    	double controllerLY = controller.getRawAxis(4) * -0.56;
+    	double controllerRX = controller.getRawAxis(1) * -0.48;
     	driveSchedulerY = controllerLY;
     	driveSchedulerX = controllerRX;
     	
@@ -264,15 +293,16 @@ public class Robot extends IterativeRobot {
         aimAssist = stick.getRawButton(2);
         if(aimAssist == true){
     	   if(xCord < 75){
-    		   driveSchedulerX = 0.2;
+    		   driveSchedulerY = 0.5;
     		   SmartDashboard.putString("Aim Assist: ", "Too Far Left, Moving Right");
     	   }
     	   if(xCord > 85){
-    		   driveSchedulerX = -0.2;
+    		   driveSchedulerY = -0.5;
     		   SmartDashboard.putString("Aim Assist: ", "Too Far Right, Moving Left");
     	   }
+    	   
     	   if(!(xCord <70) && !(xCord >90)){
-    		   driveSchedulerX = 0.0;
+    		   driveSchedulerY = 0.0;
     		   SmartDashboard.putString("Aim Assist: ", "On Target");
     	   }
        }
