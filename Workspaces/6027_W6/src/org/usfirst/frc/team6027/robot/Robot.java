@@ -37,6 +37,7 @@ public class Robot extends IterativeRobot {
 	ADXRS450_Gyro gyro;
 	DigitalInput upperLimit;
 	DigitalInput bottomLimit;
+	DigitalInput middleHall;
 	NetworkTable table;
 	int atonLoopCounter;
 	boolean buttonValue;
@@ -66,8 +67,9 @@ public class Robot extends IterativeRobot {
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
     	stick = new Joystick(0); //Assign to a joystick on port 0
     	controller = new Joystick(1);
-    	upperLimit = new DigitalInput(9);
-    	bottomLimit = new DigitalInput(2);
+    	upperLimit = new DigitalInput(0);
+    	bottomLimit = new DigitalInput(1);
+    	middleHall = new DigitalInput(2);
     	gyro = new ADXRS450_Gyro();
     	dustPanAngle = new AnalogPotentiometer(0, 210, -10);
     	//Grip Test Code
@@ -315,7 +317,9 @@ public class Robot extends IterativeRobot {
     	//Compressor
     	//Compressor c = new Compressor(0);
     	//c.setClosedLoopControl(true);
-    	
+    	if(middleHall.get() == true){
+    		SmartDashboard.putString("Middle Hall Sensor: ", "True");
+    	}
     }
     
 }
