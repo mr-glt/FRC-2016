@@ -181,7 +181,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("Angle: ", angle);
     	//Drivetrain
     	double controllerLY = controller.getRawAxis(4) * -0.56;
-    	double controllerRX = controller.getRawAxis(1) * -0.48;
+    	double controllerRX = controller.getRawAxis(1) * -0.56;
     	driveSchedulerY = controllerLY;
     	driveSchedulerX = controllerRX;
     	
@@ -316,7 +316,7 @@ public class Robot extends IterativeRobot {
     	//Compressor
     	//Compressor c = new Compressor(0);
     	//c.setClosedLoopControl(true);
-
+    	
     }
     
 }

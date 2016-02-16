@@ -2739,3 +2739,135 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 01:03:00.509
 !MESSAGE Preferences initialized.
+!SESSION 2016-02-15 15:02:53.430 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:22.643
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:22.672
+!MESSAGE Install necessary for tools
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-15 15:03:23.875
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:24.629
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:24.638
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:24.663
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:24.671
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:03:24.699
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:03:31.213
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W6\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:03:31.221
+!MESSAGE Targets: deploy, Mode: run
+!SESSION 2016-02-15 15:12:23.074 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:54.184
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:54.228
+!MESSAGE Install necessary for tools
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-15 15:12:55.385
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:58.753
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:58.809
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:58.832
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:58.844
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 15:12:58.862
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:24:56.415
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W6\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:24:56.421
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:30:05.851
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W6\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:30:05.855
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:31:15.482
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W6\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 15:31:15.485
+!MESSAGE Targets: deploy, Mode: run
+!SESSION 2016-02-15 17:12:34.624 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 17:13:13.387
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 17:13:13.553
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 17:13:13.761
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 17:13:14.126
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 17:13:14.148
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-02-15 17:13:14.153
+!MESSAGE Installedjava
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-15 17:13:14.963
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 17:13:55.833
+!MESSAGE Running ant file: C:\Users\Charlie\Desktop\FRC-2016\Workspaces\6027_W6\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-02-15 17:13:55.837
+!MESSAGE Targets: deploy, Mode: run
