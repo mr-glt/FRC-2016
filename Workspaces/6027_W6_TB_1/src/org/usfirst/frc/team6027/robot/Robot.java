@@ -5,15 +5,12 @@ import java.io.IOException;
 //import java.util.Arrays;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -38,6 +35,8 @@ public class Robot extends IterativeRobot {
 	boolean buttonValue;
 	boolean inverted;
 	boolean aimAssist;
+	boolean upButton;
+	boolean downButton;
 	boolean spinShooterwheelForward;
 	boolean spinShooterwheelBackward;
 	boolean turnDone = false;
@@ -204,7 +203,18 @@ public class Robot extends IterativeRobot {
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Plunger Status: ", "In");
     	}
-
+    	//Dust Pan Moving Code
+    	upButton = stick.getRawButton(4);
+    	downButton = stick.getRawButton(5);
+    	if(upButton == true && downButton == false){
+    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Dustpan Status: ", "Up");
+    	}
+    	if(downButton == true && upButton == false){
+    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Dustpan Status: ", "Down");
+    	}
+    	
 	    //Grip Test Code
 	    double defaultValue[] = new double[0];
 	    double[] visionX = table.getNumberArray("centerX", defaultValue);
