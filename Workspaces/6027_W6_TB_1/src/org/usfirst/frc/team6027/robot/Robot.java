@@ -32,19 +32,11 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(1, 2);
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(3, 4);
 	CANTalon flyWheel = new CANTalon(1);
-	CANTalon dustPanTilt = new CANTalon(0);
-	Potentiometer dustPanAngle;
 	ADXRS450_Gyro gyro;
-	DigitalInput upperLimit;
-	DigitalInput bottomLimit;
-	DigitalInput middleHall;
 	NetworkTable table;
 	int atonLoopCounter;
 	boolean buttonValue;
-	boolean locksButtonValue;
-	boolean locksButtonCloseValue;
 	boolean inverted;
-	boolean locksEngaded = false;
 	boolean aimAssist;
 	boolean spinShooterwheelForward;
 	boolean spinShooterwheelBackward;
@@ -67,11 +59,7 @@ public class Robot extends IterativeRobot {
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
     	stick = new Joystick(0); //Assign to a joystick on port 0
     	controller = new Joystick(1);
-    	upperLimit = new DigitalInput(0);
-    	bottomLimit = new DigitalInput(1);
-    	middleHall = new DigitalInput(2);
     	gyro = new ADXRS450_Gyro();
-    	dustPanAngle = new AnalogPotentiometer(0, 210, -10);
     	//Grip Test Code
     	try {
             new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
@@ -205,9 +193,6 @@ public class Robot extends IterativeRobot {
         	flyWheel.set(0);
         	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
-        //Dust Pan Angle
-        double degrees = dustPanAngle.get();
-        SmartDashboard.putNumber("Dust Pan Angle: ", degrees);
         
     	//Ball Plunger
     	buttonValue = stick.getRawButton(1);
@@ -219,64 +204,6 @@ public class Robot extends IterativeRobot {
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Plunger Status: ", "In");
     	}
-    	
-    	//Dust Pan Locks
-    	locksButtonValue = stick.getRawButton(3);
-    	if(locksButtonValue == true || locksEngaded == true){
-    		dustPanSol.set(DoubleSolenoid.Value.kForward);
-    		locksEngaded = true;
-    	}
-    	else{
-    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-    	}
-    	
-    	locksButtonCloseValue = stick.getRawButton(4);
-    	if(locksButtonCloseValue == true){
-    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-    		locksEngaded = false;
-    	}
-    	SmartDashboard.putBoolean("Locks Status", locksEngaded);
-    	
-    	//Dust Pan Tilt
-    	adjTilt = stick.getY() * 0.25;
-	    if(locksEngaded == false){	
-    		if(upperLimit.get() == false){
-	    		if(stick.getY() < -0.1){
-	    			dustPanTilt.set(adjTilt);
-	    			SmartDashboard.putString("Upper Limit Switch", "it");
-	    			SmartDashboard.putString("Down Override", "True");
-	    			SmartDashboard.putString("Dust Pan Status", "Movable Down");
-	    		}
-	    		else{
-	    			SmartDashboard.putString("Upper Limit Switch", "Hit");
-	    			SmartDashboard.putString("Down Override", "False");
-	    			SmartDashboard.putString("Dust Pan Status", "Locked");
-	    		}	
-	    	}
-	    	else{
-	    		if(bottomLimit.get() == false){
-	        		if(stick.getY() > 0.1){
-	        			dustPanTilt.set(adjTilt);
-	        			SmartDashboard.putString("Bottom Limit Switch: ", "Hit");
-	        			SmartDashboard.putString("Up Override: ", "True");
-	        			SmartDashboard.putString("Dust Pan Status: ", "Movable Up");
-	        		}
-	        		else{
-	        			SmartDashboard.putString("Bottom Limit Switch: ", "Hit");
-	        			SmartDashboard.putString("Up Override: ", "False");
-	        			SmartDashboard.putString("Dust Pan Status: ", "Locked");
-	        		}
-	    		}
-	    		else{
-	        		dustPanTilt.set(adjTilt); //Need to Change to Stick
-	        		SmartDashboard.putString("Upper Limit Switch: ", "Free");
-	        		SmartDashboard.putString("Bottom Limit Switch: ", "Free");
-	        		SmartDashboard.putString("Down Override: ", "NA");
-	        		SmartDashboard.putString("Up Override: ", "NA");
-	        		SmartDashboard.putString("Dust Pan Status: ", "Movable");
-	    		}
-	    	}
-	    }
 
 	    //Grip Test Code
 	    double defaultValue[] = new double[0];
@@ -318,13 +245,6 @@ public class Robot extends IterativeRobot {
     	//Compressor c = new Compressor(0);
     	//c.setClosedLoopControl(true);
     	/*
-    	if(middleHall.get() == true){
-    		SmartDashboard.putString("Middle Hall Sensor: ", "True");
-    	}
-    	*/
-    	adjTilt = stick.getY() * 0.15;
-    	dustPanTilt.set(adjTilt);
-    	SmartDashboard.putNumber("Tilt Motor", adjTilt);
     	
     	//Shooter Wheel
     	//spinShooterwheelForward = stick.getRawButton(11);
