@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,9 +27,9 @@ public class Robot extends IterativeRobot {
     RobotDrive merlin; //Create New Robot Drive
 	Joystick stick; //Create a new stick
 	Joystick controller; //Creates 
-	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(1, 2);
-	DoubleSolenoid dustPanSol = new DoubleSolenoid(3, 4);
-	CANTalon flyWheel = new CANTalon(1);
+	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(2, 3);
+	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5);
+	CANTalon flyWheel = new CANTalon(0);
 	ADXRS450_Gyro gyro;
 	NetworkTable table;
 	int atonLoopCounter;
@@ -163,13 +164,13 @@ public class Robot extends IterativeRobot {
 
     public void teleopPeriodic() {
     	//Compressor
-    	//Compressor c = new Compressor(0);
-    	//c.setClosedLoopControl(true);
+    	Compressor c = new Compressor(0);
+    	c.setClosedLoopControl(true);
     	double angle = gyro.getAngle(); // get current heading
     	SmartDashboard.putNumber("Angle: ", angle);
     	//Drivetrain
-    	double controllerLY = controller.getRawAxis(4) * -0.56;
-    	double controllerRX = controller.getRawAxis(1) * -0.56;
+    	double controllerLY = controller.getRawAxis(4) * -0.76;
+    	double controllerRX = controller.getRawAxis(1) * -0.76;
     	driveSchedulerY = controllerLY;
     	driveSchedulerX = controllerRX;
     	
@@ -180,17 +181,12 @@ public class Robot extends IterativeRobot {
         	flyWheel.set(1);
         	SmartDashboard.putString("Shooter Wheel: ", "Pusing Out");
         }
-        else{
-        	flyWheel.set(0);
-        	SmartDashboard.putString("Shooter Wheel: ", "Off");
-        }
         if(spinShooterwheelBackward == true && spinShooterwheelForward == false){
         	flyWheel.set(-1);
         	SmartDashboard.putString("Shooter Wheel: ", "Sucking In");
         }
-        else{
+        if(spinShooterwheelBackward == false && spinShooterwheelForward == false){
         	flyWheel.set(0);
-        	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
         
     	//Ball Plunger
@@ -204,10 +200,10 @@ public class Robot extends IterativeRobot {
     		SmartDashboard.putString("Plunger Status: ", "In");
     	}
     	//Dust Pan Moving Code
-    	upButton = stick.getRawButton(4);
-    	downButton = stick.getRawButton(5);
+    	upButton = stick.getRawButton(9);
+    	downButton = stick.getRawButton(10);
     	if(upButton == true && downButton == false){
-    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    		dustPanSol.set(DoubleSolenoid.Value.kForward);
     		SmartDashboard.putString("Dustpan Status: ", "Up");
     	}
     	if(downButton == true && upButton == false){
@@ -252,8 +248,10 @@ public class Robot extends IterativeRobot {
 
     public void testPeriodic(){
     	//Compressor
-    	//Compressor c = new Compressor(0);
-    	//c.setClosedLoopControl(true);
+    	Compressor c = new Compressor(0);
+    	c.setClosedLoopControl(true);
+    	
+    
     	/*
     	
     	//Shooter Wheel
