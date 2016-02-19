@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
     //Smart Dashboard Crap
     final String defaultAuto = "Default";
     final String customAuto = "My Auto";
+    final String lowbarAuto = "Lowbar Auto";
     String autoSelected;
     SendableChooser chooser;
 	
@@ -61,6 +62,7 @@ public class Robot extends IterativeRobot {
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
+        chooser.addObject("Lowbar Auto", lowbarAuto);
         SmartDashboard.putData("Auto choices", chooser);
         
         //Assign objects
@@ -94,6 +96,9 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic() {
     	switch(autoSelected) {
+    	case lowbarAuto:
+    		//This is the code for the lowbar.
+    	break;
     	case customAuto:
         //Put custom auto code here   
             break;
