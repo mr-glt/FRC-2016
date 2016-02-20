@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 	Joystick controller; //Creates 
 	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(2, 3);
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5);
-	DoubleSolenoid stops = new DoubleSolenoid(6, 7);
+	DoubleSolenoid stops = new DoubleSolenoid(1, 6);
 	CANTalon flyWheel = new CANTalon(0);
 	ADXRS450_Gyro gyro;
 	NetworkTable table;
@@ -64,8 +64,8 @@ public class Robot extends IterativeRobot {
         
         //Assign objects
     	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
-    	stick = new Joystick(0); //Assign to a joystick on port 0
-    	controller = new Joystick(1);
+    	stick = new Joystick(1); //Assign to a joystick on port 0
+    	controller = new Joystick(0);
     	gyro = new ADXRS450_Gyro();
     	//Grip Test Code
     	try {
@@ -173,7 +173,7 @@ public class Robot extends IterativeRobot {
     	double angle = gyro.getAngle(); // get current heading
     	SmartDashboard.putNumber("Angle: ", angle);
     	//Drivetrain
-    	double controllerLY = controller.getRawAxis(4) * -0.76;
+    	double controllerLY = controller.getRawAxis(4) * -0.96;
     	double controllerRX = controller.getRawAxis(1) * -0.76;
     	driveSchedulerY = controllerLY;
     	driveSchedulerX = controllerRX;
@@ -203,7 +203,7 @@ public class Robot extends IterativeRobot {
     		stops.set(DoubleSolenoid.Value.kReverse);
     	}
     	
-    	locksButtonCloseValue = stick.getRawButton(4);
+    	locksButtonCloseValue = stick.getRawButton(12);
     	if(locksButtonCloseValue == true){
     		stops.set(DoubleSolenoid.Value.kReverse);
     		locksEngaded = false;
