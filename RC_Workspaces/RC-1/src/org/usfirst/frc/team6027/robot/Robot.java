@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -36,7 +37,7 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid stops = new DoubleSolenoid(1, 6);
 	CANTalon flyWheel = new CANTalon(0);
 	ADXRS450_Gyro gyro;
-	NetworkTable table;
+	CameraServer server;
 	int atonLoopCounter;
 	boolean buttonValue;
 	boolean inverted;
@@ -44,11 +45,15 @@ public class Robot extends IterativeRobot {
 	boolean upButton;
 	boolean locksButtonValue;
 	boolean locksButtonCloseValue;
+	boolean invertButton;
 	boolean downButton;
 	boolean spinShooterwheelForward;
 	boolean spinShooterwheelBackward;
+	boolean slowModeButton;
+	boolean gyroSetButton;
 	boolean turnDone = false;
 	boolean locksEngaded = false;
+	boolean dustpanUpStatus;
 	double adjTilt;
 	double Kp = 0.03;
 	double xCord;
@@ -67,13 +72,9 @@ public class Robot extends IterativeRobot {
     	stick = new Joystick(1); //Assign to a joystick on port 0
     	controller = new Joystick(0);
     	gyro = new ADXRS450_Gyro();
-    	//Grip Test Code
-    	try {
-            new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        table = NetworkTable.getTable("GRIP/myContoursReport");
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        server.startAutomaticCapture("cam0");
         //Gyro
         gyro.calibrate();
     }
@@ -170,13 +171,41 @@ public class Robot extends IterativeRobot {
     	//Compressor
     	Compressor c = new Compressor(0);
     	c.setClosedLoopControl(true);
+    	
+    	//Gyro
     	double angle = gyro.getAngle(); // get current heading
     	SmartDashboard.putNumber("Angle: ", angle);
+    	gyroSetButton = stick.getRawButton(5);
+    	if(gyroSetButton == true){
+    		gyro.calibrate();
+    	}
     	//Drivetrain
-    	double controllerLY = controller.getRawAxis(4) * -0.96;
-    	double controllerRX = controller.getRawAxis(1) * -0.76;
-    	driveSchedulerY = controllerLY;
-    	driveSchedulerX = controllerRX;
+    	invertButton = controller.getRawButton(8);
+    	if(invertButton == false){
+        	double controllerLY = controller.getRawAxis(4) * -1;
+        	double controllerRX = controller.getRawAxis(1) * -0.9;
+        	driveSchedulerY = controllerLY;
+        	driveSchedulerX = controllerRX;
+        	SmartDashboard.putString("Inverted Drive: ", "Off");
+    	}
+    	else{
+        	double controllerLY = controller.getRawAxis(4) * 1;
+        	double controllerRX = controller.getRawAxis(1) * 0.9;
+        	driveSchedulerY = controllerLY;
+        	driveSchedulerX = controllerRX;
+        	SmartDashboard.putString("Inverted Drive: ", "On");
+    	}
+    	slowModeButton = controller.getRawButton(7);
+    	if(slowModeButton == true){
+        	double controllerLY = controller.getRawAxis(4) * 0.6;
+        	double controllerRX = controller.getRawAxis(1) * 0.7;
+        	driveSchedulerY = controllerLY;
+        	driveSchedulerX = controllerRX;
+        	SmartDashboard.putString("Slow Mode: ", "On");
+    	}
+    	else{
+    		SmartDashboard.putString("Slow Mode: ", "Off");
+    	}
     	
     	//Shooter Wheel
     	spinShooterwheelForward = stick.getRawButton(3);
@@ -192,10 +221,23 @@ public class Robot extends IterativeRobot {
         if(spinShooterwheelBackward == false && spinShooterwheelForward == false){
         	flyWheel.set(0);
         }
+    	//Dust Pan Moving Code
+    	upButton = stick.getRawButton(9);
+    	downButton = stick.getRawButton(10);
+    	if(upButton == true && downButton == false && locksEngaded){
+    		dustPanSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Dustpan Status: ", "Up");
+    		dustpanUpStatus = true;
+    	}
+    	if(downButton == true && upButton == false){
+    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Dustpan Status: ", "Down");
+    		dustpanUpStatus = false;
+    	}
     	
         //Dust Pan Locks
     	locksButtonValue = stick.getRawButton(11);
-    	if(locksButtonValue == true || locksEngaded == true){
+    	if((locksButtonValue == true || locksEngaded == true) && dustpanUpStatus == true){
     		stops.set(DoubleSolenoid.Value.kForward);
     		locksEngaded = true;
     	}
@@ -208,7 +250,7 @@ public class Robot extends IterativeRobot {
     		stops.set(DoubleSolenoid.Value.kReverse);
     		locksEngaded = false;
     	}
-    	SmartDashboard.putBoolean("Locks Status", locksEngaded);
+    	SmartDashboard.putBoolean("Locks Status: ", locksEngaded);
     	
     	//Ball Plunger
     	buttonValue = stick.getRawButton(1);
@@ -220,51 +262,7 @@ public class Robot extends IterativeRobot {
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Plunger Status: ", "In");
     	}
-    	//Dust Pan Moving Code
-    	upButton = stick.getRawButton(9);
-    	downButton = stick.getRawButton(10);
-    	if(upButton == true && downButton == false){
-    		dustPanSol.set(DoubleSolenoid.Value.kForward);
-    		SmartDashboard.putString("Dustpan Status: ", "Up");
-    	}
-    	if(downButton == true && upButton == false){
-    		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-    		SmartDashboard.putString("Dustpan Status: ", "Down");
-    	}
     	
-	    //Grip Test Code
-	    double defaultValue[] = new double[0];
-	    double[] visionX = table.getNumberArray("centerX", defaultValue);
-	    double[] visionY = table.getNumberArray("centerY", defaultValue);
-	    for(Double visionXCord : visionX){
-	    	SmartDashboard.putNumber("X Value of Box: ", visionXCord);
-	    	xCord = visionXCord;
-        }
-        for(Double visionYCord : visionY){
-		   SmartDashboard.putNumber("Y Value of Box: ", visionYCord);
-        } 
-       
-       //Aim Assist
-        aimAssist = stick.getRawButton(2);
-        if(aimAssist == true){
-    	   if(xCord < 75){
-    		   driveSchedulerY = 0.5;
-    		   SmartDashboard.putString("Aim Assist: ", "Too Far Left, Moving Right");
-    	   }
-    	   if(xCord > 85){
-    		   driveSchedulerY = -0.5;
-    		   SmartDashboard.putString("Aim Assist: ", "Too Far Right, Moving Left");
-    	   }
-    	   
-    	   if(!(xCord <70) && !(xCord >90)){
-    		   driveSchedulerY = 0.0;
-    		   SmartDashboard.putString("Aim Assist: ", "On Target");
-    	   }
-       }
-       else{
-    	   SmartDashboard.putString("Aim Assist: ", "Off");
-       }
-       merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
     }
     
     public void testPeriodic() {
