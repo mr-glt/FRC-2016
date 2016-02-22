@@ -180,7 +180,7 @@ public class Robot extends IterativeRobot {
     		gyro.calibrate();
     	}
     	//Drivetrain
-    	
+    	/*
     	invertButton = controller.getRawButton(8);
     	if(invertButton == false){
         	double controllerLY = controller.getRawAxis(4) * -1;
@@ -207,7 +207,11 @@ public class Robot extends IterativeRobot {
     	else{
     		SmartDashboard.putString("Slow Mode: ", "Off");
     	}
-    	
+    	*/
+    	double controllerLY = controller.getRawAxis(4) * -1;
+    	double controllerRX = controller.getRawAxis(1) * -0.9;
+    	driveSchedulerY = controllerLY;
+    	driveSchedulerX = controllerRX;
     	//Shooter Wheel
     	spinShooterwheelForward = stick.getRawButton(3);
     	spinShooterwheelBackward = stick.getRawButton(4);
@@ -225,7 +229,7 @@ public class Robot extends IterativeRobot {
     	//Dust Pan Moving Code
     	upButton = stick.getRawButton(9);
     	downButton = stick.getRawButton(10);
-    	if(upButton == true && downButton == false){
+    	if(upButton == true && downButton == false && locksEngaded){
     		dustPanSol.set(DoubleSolenoid.Value.kForward);
     		SmartDashboard.putString("Dustpan Status: ", "Up");
     		dustpanUpStatus = true;
@@ -238,7 +242,7 @@ public class Robot extends IterativeRobot {
     	
         //Dust Pan Locks
     	locksButtonValue = stick.getRawButton(11);
-    	if(locksButtonValue == true || locksEngaded == true){
+    	if((locksButtonValue == true || locksEngaded == true) && dustpanUpStatus == true){
     		stops.set(DoubleSolenoid.Value.kForward);
     		locksEngaded = true;
     	}
@@ -263,7 +267,7 @@ public class Robot extends IterativeRobot {
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Plunger Status: ", "In");
     	}
-    	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
+    	
     }
     
     public void testPeriodic() {
