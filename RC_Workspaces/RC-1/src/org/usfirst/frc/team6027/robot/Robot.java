@@ -80,130 +80,98 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
+		double angle = gyro.getAngle(); // get current heading
     	switch(autoSelected) {
     	case customAuto:
         	//Compressor
         	c.setClosedLoopControl(true);
-        
-    		double angle = gyro.getAngle(); // get current heading
+       
     		SmartDashboard.putNumber("Angle: ", angle);
         	if(atonLoopCounter < 50){ //About 50 loops per second
         		dustPanSol.set(DoubleSolenoid.Value.kReverse);
         		stops.set(DoubleSolenoid.Value.kForward);
         		gyro.calibrate();
+        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
+        		atonLoopCounter++;
         		
         	}
         	if(atonLoopCounter > 49 && atonLoopCounter < 250 && autoStop == false){
                 SmartDashboard.putNumber("Error", (angle*Kp));
         		driveSchedulerX = -angle*Kp;
         		driveSchedulerY = 0.45;
+        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
+        		atonLoopCounter++;
         	}
         	if(atonLoopCounter > 249 && atonLoopCounter < 450 && autoStop == false){
         		if(turnDone == false){
 	        		if(angle < 30){
-	            		driveSchedulerX = -0.5;
+	            		driveSchedulerX = -0.6;
 	            		driveSchedulerY = 0.0;
+	            		SmartDashboard.putString("Auto Status: ", "Turning Right");
 	        		}
 	        		if(angle > 30){
-	        			driveSchedulerX = 0.5;
+	        			driveSchedulerX = 0.6;
 	        			driveSchedulerY = 0.0;
+	        			SmartDashboard.putString("Auto Status: ", "Turning Left");
 	        		}
 	        		if(angle > 29 && angle < 31){
 	                		driveSchedulerX = 0.0;
 	                		driveSchedulerY = 0.0;
 	                		turnDone = true;
+	                		SmartDashboard.putString("Auto Status: ", "Turn Done");
 	        		}
         		}
+        		atonLoopCounter++;
         	}
         	if(atonLoopCounter > 449 && atonLoopCounter < 500 && autoStop == false){
         		dustPanSol.set(DoubleSolenoid.Value.kForward);
+        		SmartDashboard.putString("Auto Status: ", "Dustpan Up");
+        		atonLoopCounter++;
         	}
         	if(atonLoopCounter > 499 && atonLoopCounter < 650 && autoStop == false){
         		flyWheel.set(1);
+        		SmartDashboard.putString("Auto Status: ", "Spining Up");
+        		atonLoopCounter++;
         	}
         	if(atonLoopCounter > 649 && atonLoopCounter < 750 && autoStop == false){
         		flyWheel.set(1);
-        		ballPlungerSol.set(DoubleSolenoid.Value.kForward);	
+        		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
+        		SmartDashboard.putString("Auto Status: ", "Ball Out, Fingers Crossed");
+        		atonLoopCounter++;
         	}
         	if(atonLoopCounter > 749 && atonLoopCounter < 800 && autoStop == false){
         		flyWheel.set(0);
         		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
         		dustPanSol.set(DoubleSolenoid.Value.kReverse);
         		autoStop = true;
+        		SmartDashboard.putString("Auto Status: ", "Auto Stopping");
+        		atonLoopCounter++;
         	}
+        	SmartDashboard.putString("Auto Status: ", "Auto Stopped");
         	break;
     	case defaultAuto:
     	default:
     		//Compressor
         	c.setClosedLoopControl(true);
-    		/*
-    		double angle = gyro.getAngle(); // get current heading
     		SmartDashboard.putNumber("Angle: ", angle);
-    		
-
-    		
-    		if(atonLoopCounter < 200) //About 50 loops per second
-    		{
-        		SmartDashboard.putNumber("Error", (angle*Kp));
-        		SmartDashboard.putString("Aton Status", "Driving Forward");
+        	if(atonLoopCounter < 50){ //About 50 loops per second
+        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+        		stops.set(DoubleSolenoid.Value.kForward);
+        		gyro.calibrate();
+        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
+        		atonLoopCounter++;
+        	}
+        	if(atonLoopCounter > 49 && atonLoopCounter < 300 && autoStop == false){
+                SmartDashboard.putNumber("Error", (angle*Kp));
         		driveSchedulerX = -angle*Kp;
         		driveSchedulerY = 0.45;
-    			atonLoopCounter++;
-    		} 
-            if(atonLoopCounter > 199 && turnDone == false){
-        		if(angle < 180){
-            		driveSchedulerX = -0.5;
-            		driveSchedulerY = 0.0;
-        		}
-        		if(angle > 180){
-        			driveSchedulerX = 0.5;
-        			driveSchedulerY = 0.0;
-        		}
-        		if(angle > 179 && angle < 181){
-                		driveSchedulerX = 0.0;
-                		driveSchedulerY = 0.0;
-                		turnDone = true;
-                		
-        		}
-        	
-            }
-    		if(atonLoopCounter < 300 && turnDone == true){
-            	SmartDashboard.putString("Aton Status", "Programed Rotate");
-            	driveSchedulerY = 0.45;
-            	driveSchedulerX = 0.0;
-            	atonLoopCounter++;
-            }
-
-            if(atonLoopCounter > 399 && atonLoopCounter < 410){
-            	SmartDashboard.putString("Aton Status", "Auto Aim");
-             	   if(xCord < 75){
-             		   merlin.drive(0.0, 0.2);
-             		   SmartDashboard.putString("Aim Assist: ", "Too Far Left, Moving Right");
-             	   }
-             	   if(xCord > 85){
-             		   merlin.drive(0.0, -0.2);
-             		   SmartDashboard.putString("Aim Assist: ", "Too Far Right, Moving Left");
-             	   }
-             	   if(!(xCord <70) && !(xCord >90)){
-             		   merlin.drive(0.0, 0.0);
-             		   SmartDashboard.putString("Aim Assist: ", "On Target");
-             	   }
-            	atonLoopCounter++;
-            }
-
-            if(atonLoopCounter > 399){
-            	driveSchedulerX = 0.0;
-            	SmartDashboard.putString("Aton Status", "Done");
-            	atonLoopCounter = 0;
-            	break;
-            }
-          
-            merlin.arcadeDrive(driveSchedulerY, driveSchedulerX);
-
-            SmartDashboard.putNumber("Error", (angle*Kp));
-            merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
-         	
-            */
+        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
+        		atonLoopCounter++;
+        	}
+        	if(atonLoopCounter > 249 && autoStop == false){
+        		autoStop = true;
+        		atonLoopCounter++;
+        	}
             break;
     	}
     }
@@ -252,11 +220,11 @@ public class Robot extends IterativeRobot {
     	spinShooterwheelForward = stick.getRawButton(4);
     	spinShooterwheelBackward = stick.getRawButton(3);
         if(spinShooterwheelForward == true && spinShooterwheelBackward == false){
-        	flyWheel.set(-1);
+        	flyWheel.set(-0.75);
         	SmartDashboard.putString("Shooter Wheel: ", "Pusing Out");
         }
         if(spinShooterwheelBackward == true && spinShooterwheelForward == false){
-        	flyWheel.set(1);
+        	flyWheel.set(0.9);
         	SmartDashboard.putString("Shooter Wheel: ", "Sucking In");
         }
         if(spinShooterwheelBackward == false && spinShooterwheelForward == false){
