@@ -36,6 +36,7 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5);
 	DoubleSolenoid stops = new DoubleSolenoid(1, 6);
 	CANTalon flyWheel = new CANTalon(0);
+	Compressor c = new Compressor(0);
 	ADXRS450_Gyro gyro;
 	CameraServer server;
 	int atonLoopCounter;
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
 	boolean turnDone = false;
 	boolean locksEngaded = false;
 	boolean dustpanUpStatus;
+	boolean autoStop = false;
 	double adjTilt;
 	double Kp = 0.03;
 	double xCord;
@@ -89,14 +91,61 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
     	switch(autoSelected) {
     	case customAuto:
-        //Put custom auto code here   
-            break;
+        	//Compressor
+        	c.setClosedLoopControl(true);
+        
+    		double angle = gyro.getAngle(); // get current heading
+    		SmartDashboard.putNumber("Angle: ", angle);
+        	if(atonLoopCounter < 50){ //About 50 loops per second
+        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+        		stops.set(DoubleSolenoid.Value.kForward);
+        		gyro.calibrate();
+        		
+        	}
+        	if(atonLoopCounter > 49 && atonLoopCounter < 250 && autoStop == false){
+                SmartDashboard.putNumber("Error", (angle*Kp));
+        		driveSchedulerX = -angle*Kp;
+        		driveSchedulerY = 0.45;
+        	}
+        	if(atonLoopCounter > 249 && atonLoopCounter < 450 && autoStop == false){
+        		if(turnDone == false){
+	        		if(angle < 30){
+	            		driveSchedulerX = -0.5;
+	            		driveSchedulerY = 0.0;
+	        		}
+	        		if(angle > 30){
+	        			driveSchedulerX = 0.5;
+	        			driveSchedulerY = 0.0;
+	        		}
+	        		if(angle > 29 && angle < 31){
+	                		driveSchedulerX = 0.0;
+	                		driveSchedulerY = 0.0;
+	                		turnDone = true;
+	        		}
+        		}
+        	}
+        	if(atonLoopCounter > 449 && atonLoopCounter < 500 && autoStop == false){
+        		dustPanSol.set(DoubleSolenoid.Value.kForward);
+        	}
+        	if(atonLoopCounter > 499 && atonLoopCounter < 650 && autoStop == false){
+        		flyWheel.set(1);
+        	}
+        	if(atonLoopCounter > 649 && atonLoopCounter < 750 && autoStop == false){
+        		flyWheel.set(1);
+        		ballPlungerSol.set(DoubleSolenoid.Value.kForward);	
+        	}
+        	if(atonLoopCounter > 749 && atonLoopCounter < 800 && autoStop == false){
+        		flyWheel.set(0);
+        		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
+        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+        		autoStop = true;
+        	}
+        	break;
     	case defaultAuto:
     	default:
-        	//Compressor
-        	//Compressor c = new Compressor(0);
-        	//c.setClosedLoopControl(true);
-    		
+    		//Compressor
+        	c.setClosedLoopControl(true);
+    		/*
     		double angle = gyro.getAngle(); // get current heading
     		SmartDashboard.putNumber("Angle: ", angle);
     		
@@ -133,7 +182,7 @@ public class Robot extends IterativeRobot {
             	driveSchedulerX = 0.0;
             	atonLoopCounter++;
             }
-/*
+
             if(atonLoopCounter > 399 && atonLoopCounter < 410){
             	SmartDashboard.putString("Aton Status", "Auto Aim");
              	   if(xCord < 75){
@@ -150,7 +199,7 @@ public class Robot extends IterativeRobot {
              	   }
             	atonLoopCounter++;
             }
-        */
+
             if(atonLoopCounter > 399){
             	driveSchedulerX = 0.0;
             	SmartDashboard.putString("Aton Status", "Done");
@@ -159,17 +208,17 @@ public class Robot extends IterativeRobot {
             }
           
             merlin.arcadeDrive(driveSchedulerY, driveSchedulerX);
-            /*
+
             SmartDashboard.putNumber("Error", (angle*Kp));
             merlin.drive(-0.2, -angle*Kp); // drive towards heading 0
-         	*/
+         	
+            */
             break;
     	}
     }
 
     public void teleopPeriodic() {
     	//Compressor
-    	Compressor c = new Compressor(0);
     	c.setClosedLoopControl(true);
     	
     	//Gyro
@@ -181,7 +230,7 @@ public class Robot extends IterativeRobot {
     	}
     	//Drivetrain
     	
-    	invertButton = controller.getRawButton(8);
+    	invertButton = controller.getRawButton(5);
     	if(invertButton == false){
         	double controllerLY = controller.getRawAxis(4) * -1;
         	double controllerRX = controller.getRawAxis(1) * -0.9;
@@ -196,10 +245,10 @@ public class Robot extends IterativeRobot {
         	driveSchedulerX = controllerRX;
         	SmartDashboard.putString("Inverted Drive: ", "On");
     	}
-    	slowModeButton = controller.getRawButton(7);
+    	slowModeButton = controller.getRawButton(6);
     	if(slowModeButton == true){
-        	double controllerLY = controller.getRawAxis(4) * 0.6;
-        	double controllerRX = controller.getRawAxis(1) * 0.7;
+        	double controllerLY = controller.getRawAxis(4) * -0.6;
+        	double controllerRX = controller.getRawAxis(1) * -0.7;
         	driveSchedulerY = controllerLY;
         	driveSchedulerX = controllerRX;
         	SmartDashboard.putString("Slow Mode: ", "On");
@@ -209,14 +258,14 @@ public class Robot extends IterativeRobot {
     	}
     	
     	//Shooter Wheel
-    	spinShooterwheelForward = stick.getRawButton(3);
-    	spinShooterwheelBackward = stick.getRawButton(4);
+    	spinShooterwheelForward = stick.getRawButton(4);
+    	spinShooterwheelBackward = stick.getRawButton(3);
         if(spinShooterwheelForward == true && spinShooterwheelBackward == false){
-        	flyWheel.set(1);
+        	flyWheel.set(-1);
         	SmartDashboard.putString("Shooter Wheel: ", "Pusing Out");
         }
         if(spinShooterwheelBackward == true && spinShooterwheelForward == false){
-        	flyWheel.set(-1);
+        	flyWheel.set(1);
         	SmartDashboard.putString("Shooter Wheel: ", "Sucking In");
         }
         if(spinShooterwheelBackward == false && spinShooterwheelForward == false){
@@ -234,6 +283,8 @@ public class Robot extends IterativeRobot {
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Dustpan Status: ", "Down");
     		dustpanUpStatus = false;
+    		stops.set(DoubleSolenoid.Value.kForward);
+    		locksEngaded = true;
     	}
     	
         //Dust Pan Locks
@@ -267,8 +318,6 @@ public class Robot extends IterativeRobot {
     }
     
     public void testPeriodic() {
-    	//Compressor
-    	Compressor c = new Compressor(0);
     	c.setClosedLoopControl(true);
     }
     
