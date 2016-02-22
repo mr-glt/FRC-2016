@@ -21,8 +21,8 @@ public class Robot extends IterativeRobot {
 	
     //Create new objects
     RobotDrive merlin; //Create New Robot Drive
-	Joystick stick; //Create a new stick
-	Joystick controller; //Creates 
+	Joystick stick; //Create a new stick for our 3D Pro
+	Joystick controller; //Creates a new stick for our XBox Controller
 	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(2, 3);
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5);
 	DoubleSolenoid stops = new DoubleSolenoid(1, 6);
@@ -97,24 +97,24 @@ public class Robot extends IterativeRobot {
         	}
         	if(atonLoopCounter > 49 && atonLoopCounter < 250 && autoStop == false){
                 SmartDashboard.putNumber("Error", (angle*Kp));
-        		driveSchedulerX = -angle*Kp;
-        		driveSchedulerY = 0.45;
+        		driveSchedulerX = angle*Kp;
+        		driveSchedulerY = -0.45;
         		SmartDashboard.putString("Auto Status: ", "Driving Forward");
         		atonLoopCounter++;
         	}
         	if(atonLoopCounter > 249 && atonLoopCounter < 450 && autoStop == false){
         		if(turnDone == false){
-	        		if(angle < 30){
-	            		driveSchedulerX = -0.6;
+	        		if(angle < 150){
+	            		driveSchedulerX = 0.6;
 	            		driveSchedulerY = 0.0;
 	            		SmartDashboard.putString("Auto Status: ", "Turning Right");
 	        		}
-	        		if(angle > 30){
-	        			driveSchedulerX = 0.6;
+	        		if(angle > 150){
+	        			driveSchedulerX = -0.6;
 	        			driveSchedulerY = 0.0;
 	        			SmartDashboard.putString("Auto Status: ", "Turning Left");
 	        		}
-	        		if(angle > 29 && angle < 31){
+	        		if(angle > 148 && angle < 152){
 	                		driveSchedulerX = 0.0;
 	                		driveSchedulerY = 0.0;
 	                		turnDone = true;
@@ -163,8 +163,8 @@ public class Robot extends IterativeRobot {
         	}
         	if(atonLoopCounter > 49 && atonLoopCounter < 300 && autoStop == false){
                 SmartDashboard.putNumber("Error", (angle*Kp));
-        		driveSchedulerX = -angle*Kp;
-        		driveSchedulerY = 0.45;
+        		driveSchedulerX = angle*Kp;
+        		driveSchedulerY = -0.45;
         		SmartDashboard.putString("Auto Status: ", "Driving Forward");
         		atonLoopCounter++;
         	}
@@ -187,19 +187,19 @@ public class Robot extends IterativeRobot {
     	if(gyroSetButton == true){
     		gyro.calibrate();
     	}
-    	//Drivetrain
     	
+    	//Drivetrain
     	invertButton = controller.getRawButton(5);
     	if(invertButton == false){
         	double controllerLY = controller.getRawAxis(4) * -1;
-        	double controllerRX = controller.getRawAxis(1) * -0.9;
+        	double controllerRX = controller.getRawAxis(1) * -1;
         	driveSchedulerY = controllerLY;
         	driveSchedulerX = controllerRX;
         	SmartDashboard.putString("Inverted Drive: ", "Off");
     	}
     	else{
         	double controllerLY = controller.getRawAxis(4) * 1;
-        	double controllerRX = controller.getRawAxis(1) * 0.9;
+        	double controllerRX = controller.getRawAxis(1) * 1;
         	driveSchedulerY = controllerLY;
         	driveSchedulerX = controllerRX;
         	SmartDashboard.putString("Inverted Drive: ", "On");
@@ -221,16 +221,18 @@ public class Robot extends IterativeRobot {
     	spinShooterwheelBackward = stick.getRawButton(3);
         if(spinShooterwheelForward == true && spinShooterwheelBackward == false){
         	flyWheel.set(-0.75);
-        	SmartDashboard.putString("Shooter Wheel: ", "Pusing Out");
+        	SmartDashboard.putString("Shooter Wheel: ", "Shooting");
         }
         if(spinShooterwheelBackward == true && spinShooterwheelForward == false){
         	flyWheel.set(0.9);
-        	SmartDashboard.putString("Shooter Wheel: ", "Sucking In");
+        	SmartDashboard.putString("Shooter Wheel: ", "Picking Up");
         }
         if(spinShooterwheelBackward == false && spinShooterwheelForward == false){
         	flyWheel.set(0);
+        	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
-    	//Dust Pan Moving Code
+    	
+        //Dust Pan Moving Code
     	upButton = stick.getRawButton(9);
     	downButton = stick.getRawButton(10);
     	if(upButton == true && downButton == false){
@@ -273,6 +275,10 @@ public class Robot extends IterativeRobot {
     		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Plunger Status: ", "In");
     	}
+    	
+    	//Drivetrain
+    	SmartDashboard.putNumber("X Drive Value: ", driveSchedulerX);
+    	SmartDashboard.putNumber("Y Drive Value: ", driveSchedulerY);
     	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
     }
     
