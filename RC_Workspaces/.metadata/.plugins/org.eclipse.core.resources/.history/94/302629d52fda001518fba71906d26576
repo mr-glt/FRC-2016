@@ -78,36 +78,36 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-		double angle = gyro.getAngle(); // get current heading
-    	//Compressor
-    	c.setClosedLoopControl(true);
-   
-		SmartDashboard.putNumber("Angle: ", angle);
-    	if(autoStop == false){
-    		if(atonLoopCounter < 50){ //About 50 loops per second
-        		stops.set(DoubleSolenoid.Value.kReverse);
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-        		gyro.calibrate();
-        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	
-        		atonLoopCounter++;
+			double angle = gyro.getAngle(); // get current heading
+        	//Compressor
+        	c.setClosedLoopControl(true);
+       
+    		SmartDashboard.putNumber("Angle: ", angle);
+        	if(autoStop == false){
+	    		if(atonLoopCounter < 50){ //About 50 loops per second
+	        		stops.set(DoubleSolenoid.Value.kReverse);
+	        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+	        		gyro.calibrate();
+	        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
+	        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	
+	        		atonLoopCounter++;
+	        	}
+	        	if(atonLoopCounter > 49 && atonLoopCounter < 350){
+	                SmartDashboard.putNumber("Error", (angle*Kp));
+	        		driveSchedulerX = angle*Kp;
+	        		driveSchedulerY = -0.9;
+	        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
+	        		
+	        		atonLoopCounter++;
+	        	}
+	        	if(atonLoopCounter >349 && atonLoopCounter < 355){
+	        		driveSchedulerX = 0.0;
+	        		driveSchedulerY = 0.0;
+	        		autoStop = true;
+	        		atonLoopCounter++;
+	        	}
+	        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
         	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 350){
-                SmartDashboard.putNumber("Error", (angle*Kp));
-        		driveSchedulerX = angle*Kp;
-        		driveSchedulerY = -0.9;
-        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter >349 && atonLoopCounter < 355){
-        		driveSchedulerX = 0.0;
-        		driveSchedulerY = 0.0;
-        		autoStop = true;
-        		atonLoopCounter++;
-        		SmartDashboard.putString("Auto Status: ", "Stopped");
-        	}
-        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
-    	}
     }
 
     public void teleopPeriodic() {
