@@ -2,11 +2,9 @@
 package org.usfirst.frc.team6027.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import java.io.IOException;
-
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -14,13 +12,9 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.VictorSP;
 
 public class Robot extends IterativeRobot {
-    //Smart Dashboard Crap
-    final String defaultAuto = "Default";
-    final String customAuto = "My Auto";
-    String autoSelected;
-    SendableChooser chooser;
 	
     //Create new objects
     RobotDrive merlin; //Create New Robot Drive
@@ -29,7 +23,12 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(2, 3);
 	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5);
 	DoubleSolenoid stops = new DoubleSolenoid(1, 6);
-	CANTalon flyWheel = new CANTalon(0);
+	//CANTalon flyWheel = new CANTalon(0);
+	CANTalon frontLeft = new CANTalon(0);
+	CANTalon frontRight = new CANTalon(1);
+	VictorSP backLeft = new VictorSP(0);
+	VictorSP backRight = new VictorSP(1);
+	Jaguar flyWheel = new Jaguar(2);
 	Compressor c = new Compressor(0);
 	ADXRS450_Gyro gyro;
 	int atonLoopCounter;
@@ -49,6 +48,8 @@ public class Robot extends IterativeRobot {
 	boolean locksEngaded = false;
 	boolean dustpanUpStatus;
 	boolean autoStop = false;
+	boolean triggerLocks = false;
+	boolean triggerClose = false;
 	double adjTilt;
 	double Kp = 0.03;
 	double xCord;
@@ -56,14 +57,9 @@ public class Robot extends IterativeRobot {
 	double driveSchedulerY;
 	
     public void robotInit() {
-    	//Smart Dashboard Crap
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", defaultAuto);
-        chooser.addObject("My Auto", customAuto);
-        SmartDashboard.putData("Auto choices", chooser);
         
         //Assign objects
-    	merlin = new RobotDrive(0,1); //Assign to robodrive on PWM 0 and 1
+    	merlin = new RobotDrive(frontLeft, backLeft,frontRight, backRight); //Assign to robodrive on PWM 0 and 1
     	stick = new Joystick(1); //Assign to a joystick on port 0
     	controller = new Joystick(0);
     	gyro = new ADXRS450_Gyro();
@@ -78,87 +74,41 @@ public class Robot extends IterativeRobot {
     }
     
     public void autonomousInit() {
-    	//Smart Dashboard Crap
-    	autoSelected = (String) chooser.getSelected();
-//		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
-		System.out.println("Auto selected: " + autoSelected);
+
     }
 
     public void autonomousPeriodic() {
-		double angle = gyro.getAngle(); // get current heading
-    
+			double angle = gyro.getAngle(); // get current heading
         	//Compressor
         	c.setClosedLoopControl(true);
        
     		SmartDashboard.putNumber("Angle: ", angle);
-        	if(atonLoopCounter < 50){ //About 50 loops per second
-        		stops.set(DoubleSolenoid.Value.kReverse);
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-        		
-        		//gyro.calibrate();
-        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	
-        		atonLoopCounter++;
+        	if(autoStop == false){
+	    		if(atonLoopCounter < 50){ //About 50 loops per second
+	        		stops.set(DoubleSolenoid.Value.kReverse);
+	        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
+	        		
+	        		//gyro.calibrate();
+	        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
+	        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	
+	        		atonLoopCounter++;
+	        	}
+	        	if(atonLoopCounter > 49 && atonLoopCounter < 350){
+	                SmartDashboard.putNumber("Error", (angle*Kp));
+	        		driveSchedulerX = angle*Kp;
+	        		driveSchedulerY = -0.9;
+	        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
+	        		
+	        		atonLoopCounter++;
+	        	}
+	        	if(atonLoopCounter >349 && atonLoopCounter < 355){
+	        		driveSchedulerX = 0.0;
+	        		driveSchedulerY = 0.0;
+	        		autoStop = true;
+	        		atonLoopCounter++;
+	        	}
+	        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
         	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 250){
-                SmartDashboard.putNumber("Error", (angle*Kp));
-        		driveSchedulerX = angle*Kp;
-        		driveSchedulerY = -0.45;
-        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
-        		
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter >249 && atonLoopCounter < 253){
-        		driveSchedulerX = 0.0;
-        		driveSchedulerY = 0.0;
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter > 252 && atonLoopCounter < 450){
-        		if(turnDone == false){
-	        		if(angle < 150){
-	            		driveSchedulerY = 0.6;
-	            		driveSchedulerX = 0.0;
-	            		SmartDashboard.putString("Auto Status: ", "Turning Right");
-	        		}
-	        		if(angle > 150){
-	        			driveSchedulerY = -0.6;
-	        			driveSchedulerX = 0.0;
-	        			SmartDashboard.putString("Auto Status: ", "Turning Left");
-	        		}
-	        		if(angle > 148 && angle < 152){
-	                		driveSchedulerY = 0.0;
-	                		driveSchedulerX = 0.0;
-	                		turnDone = true;
-	                		SmartDashboard.putString("Auto Status: ", "Turn Done");
-	        		}
-        		}
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter > 449 && atonLoopCounter < 500){
-        		dustPanSol.set(DoubleSolenoid.Value.kForward);
-        		SmartDashboard.putString("Auto Status: ", "Dustpan Up");
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter > 499 && atonLoopCounter < 650){
-        		flyWheel.set(-1);
-        		SmartDashboard.putString("Auto Status: ", "Spining Up");
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter > 649 && atonLoopCounter < 750){
-        		flyWheel.set(-1);
-        		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
-        		SmartDashboard.putString("Auto Status: ", "Ball Out, Fingers Crossed");
-        		atonLoopCounter++;
-        	}
-        	if(atonLoopCounter > 749 && atonLoopCounter < 800){
-        		flyWheel.set(0);
-        		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-        		autoStop = true;
-        		SmartDashboard.putString("Auto Status: ", "Auto Stopping");
-        		atonLoopCounter++;
-        	}
-        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
     }
 
     public void teleopPeriodic() {
@@ -176,14 +126,14 @@ public class Robot extends IterativeRobot {
     	//Drivetrain
     	invertButton = controller.getRawButton(5);
     	if(invertButton == false){
-        	double controllerLY = controller.getRawAxis(5) * -1;
+        	double controllerLY = controller.getRawAxis(4) * -1;
         	double controllerRX = controller.getRawAxis(1) * -1;
         	driveSchedulerY = controllerLY;
         	driveSchedulerX = controllerRX;
         	SmartDashboard.putString("Inverted Drive: ", "Off");
     	}
     	else{
-        	double controllerLY = controller.getRawAxis(5) * 1;
+        	double controllerLY = controller.getRawAxis(4) * 1;
         	double controllerRX = controller.getRawAxis(1) * 1;
         	driveSchedulerY = controllerLY;
         	driveSchedulerX = controllerRX;
@@ -224,29 +174,38 @@ public class Robot extends IterativeRobot {
     		dustPanSol.set(DoubleSolenoid.Value.kForward);
     		SmartDashboard.putString("Dustpan Status: ", "Up");
     		dustpanUpStatus = true;
+    		triggerClose = true;
     	}
     	if(downButton == true && upButton == false){
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Dustpan Status: ", "Down");
     		dustpanUpStatus = false;
+    		triggerLocks = true;
     	}
     	
         //Dust Pan Locks
     	locksButtonValue = stick.getRawButton(11);
-    	if(locksButtonValue == true || locksEngaded == true){
+    	if(locksButtonValue == true || locksEngaded == true || triggerLocks == true){
     		stops.set(DoubleSolenoid.Value.kForward);
     		locksEngaded = true;
+    		triggerLocks = false;
     	}
     	else{
     		stops.set(DoubleSolenoid.Value.kReverse);
     	}
     	
     	locksButtonCloseValue = stick.getRawButton(12);
-    	if(locksButtonCloseValue == true){
+    	if(locksButtonCloseValue == true || triggerClose == true){
     		stops.set(DoubleSolenoid.Value.kReverse);
     		locksEngaded = false;
+    		triggerClose = false;
     	}
-    	SmartDashboard.putBoolean("Locks Status: ", locksEngaded);
+    	if(locksEngaded == false){
+    		SmartDashboard.putString("Locks Status: ", "Out");
+    	}
+    	if(locksEngaded == true){
+    		SmartDashboard.putString("Locks Status: ", "In");
+    	}
     	
     	//Ball Plunger
     	buttonValue = stick.getRawButton(1);
@@ -262,7 +221,7 @@ public class Robot extends IterativeRobot {
     	//Drivetrain
     	SmartDashboard.putNumber("X Drive Value: ", driveSchedulerX);
     	SmartDashboard.putNumber("Y Drive Value: ", driveSchedulerY);
-    	merlin.tankDrive(driveSchedulerX, driveSchedulerY);
+    	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
     }
     
     public void testPeriodic() {
