@@ -16,56 +16,65 @@ import edu.wpi.first.wpilibj.VictorSP;
 
 public class Robot extends IterativeRobot {
 	
-    //Create new objects
+    //Drivetrain
     RobotDrive merlin; //Create New Robot Drive
-	Joystick stick; //Create a new stick for our 3D Pro
+	
+    //Controllers
+    Joystick stick; //Create a new stick for our 3D Pro
 	Joystick controller; //Creates a new stick for our XBox Controller
-	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(2, 3);
-	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5);
-	DoubleSolenoid stops = new DoubleSolenoid(1, 6);
-	//CANTalon flyWheel = new CANTalon(0);
-	CANTalon frontLeft = new CANTalon(0);
-	CANTalon frontRight = new CANTalon(1);
-	VictorSP backLeft = new VictorSP(0);
-	VictorSP backRight = new VictorSP(1);
-	Jaguar flyWheel = new Jaguar(2);
-	Compressor c = new Compressor(0);
-	ADXRS450_Gyro gyro;
-	int atonLoopCounter;
-	boolean buttonValue;
-	boolean inverted;
-	boolean aimAssist;
-	boolean upButton;
-	boolean locksButtonValue;
-	boolean locksButtonCloseValue;
-	boolean invertButton;
-	boolean downButton;
-	boolean spinShooterwheelForward;
-	boolean spinShooterwheelBackward;
-	boolean slowModeButton;
-	boolean gyroSetButton;
-	boolean turnDone = false;
-	boolean locksEngaded = false;
-	boolean dustpanUpStatus;
-	boolean autoStop = false;
-	boolean triggerLocks = false;
-	boolean triggerClose = false;
-	double adjTilt;
-	double Kp = 0.03;
-	double xCord;
-	double driveSchedulerX;
-	double driveSchedulerY;
+	
+	//Solenoids
+	DoubleSolenoid ballPlungerSol = new DoubleSolenoid(2, 3); //This solenoid runs the the ball pusher on the dust pan
+	DoubleSolenoid dustPanSol = new DoubleSolenoid(4, 5); //This solenoid runs the moving of the dust pan.
+	DoubleSolenoid stops = new DoubleSolenoid(1, 6); //This solenoid runs the stop on the side of the bot.
+	
+	//Speed Controllers
+	CANTalon flyWheel = new CANTalon(0); //Old speed controller, need to remove
+
+	//Gyro
+	ADXRS450_Gyro gyro; //SPI gyro from FIRST Choice
+
+	//Compressor
+	Compressor c = new Compressor(0); //Create compressor 'c' on 0
+
+	//Booleans
+	boolean plungerButton; //Create a bool for our plunger button
+	boolean upButton; //Create a bool for our dust pan up button
+	boolean locksButtonValue; //Create a bool for our locks open button
+	boolean locksButtonCloseValue; //Create a bool for our lock close button
+	boolean invertButton; //Create a bool for our inversion button
+	boolean downButton; //Create a bool for our dust pan down button
+	boolean spinShooterwheelForward; //Create a bool for our fly wheel out button
+	boolean spinShooterwheelBackward; //Create a bool for our fly wheel in button
+	boolean slowModeButton; //Create a bool for our slow mode button
+	boolean gyroSetButton; //Create a bool for our gyro set button
+	boolean locksEngaded = false; //Create a bool for locking the dust pan
+	boolean dustpanUpStatus; //Create a bool for dust pan status
+	boolean autoStop = false; //Create a bool for stopping auto mode
+	boolean triggerLocks = false; //Create a bool to trigger locks
+	boolean triggerClose = false; //Create a bool to shut locks
+	
+	//Doubles
+	double Kp = 0.03; //Constant used to drive forward in a line
+	double driveSchedulerX; //Used to hold X drive value so it can be modified multiple times
+	double driveSchedulerY; //Used to hold Y drive value so it can be modified multiple times
+
+	//Ints
+	int atonLoopCounter; //Loop used to order auto mode
 	
     public void robotInit() {
-        
-        //Assign objects
-    	merlin = new RobotDrive(frontLeft, backLeft,frontRight, backRight); //Assign to robodrive on PWM 0 and 1
-    	stick = new Joystick(1); //Assign to a joystick on port 0
-    	controller = new Joystick(0);
-    	gyro = new ADXRS450_Gyro();
-        //Gyro
-        gyro.calibrate();
-    	//Grip Test Code
+        //Drivetrain
+    	merlin = new RobotDrive(8, 9, 0, 1); //Assign robotdrive on the 4 pwm pins
+    	
+    	//Controllers
+    	stick = new Joystick(1); //Assign to a joystick on port 1
+    	controller = new Joystick(0); //Assign to a controller on port 0
+
+    	//Gyro
+    	gyro = new ADXRS450_Gyro(); //Create a new object for our SPI gyro
+    	gyro.calibrate(); //Calibrate our gyro
+    	
+    	//Grip-More info here: https://github.com/WPIRoboticsProjects/GRIP/wiki/Tutorial:-Run-GRIP-from-a-CPP,-Java,-or-LabVIEW-FRC-program
     	try {
             new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
         } catch (IOException e) {
@@ -74,48 +83,53 @@ public class Robot extends IterativeRobot {
     }
     
     public void autonomousInit() {
-
+    	//No init code
     }
 
     public void autonomousPeriodic() {
-		double angle = gyro.getAngle(); // get current heading
     	//Compressor
-    	c.setClosedLoopControl(true);
+    	c.setClosedLoopControl(true); //Run the compressor on a closed loop
    
-		SmartDashboard.putNumber("Angle: ", angle);
-    	if(autoStop == false){
-    		if(atonLoopCounter < 50){ //About 50 loops per second
-        		stops.set(DoubleSolenoid.Value.kReverse);
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse);
-        		gyro.calibrate();
-        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate");
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	
-        		atonLoopCounter++;
+    	//Gyro
+    	double angle = gyro.getAngle(); //Set angle equal to the gyro's angle
+		SmartDashboard.putNumber("Angle: ", angle); //Send the angle to the dashboard
+		
+    	/* Auto Loop */
+    	if(autoStop == false){ //Check if we are done
+    		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
+        		stops.set(DoubleSolenoid.Value.kReverse); //Put out stop
+        		dustPanSol.set(DoubleSolenoid.Value.kReverse); //Drop dust pan
+        		gyro.calibrate(); //Calibrate the gyro
+        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate"); //Send status to dashboard
+        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+        		atonLoopCounter++; //Add 1 to our counter
         	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 350){
-                SmartDashboard.putNumber("Error", (angle*Kp));
-        		driveSchedulerX = angle*Kp;
-        		driveSchedulerY = -0.9;
-        		SmartDashboard.putString("Auto Status: ", "Driving Forward");
-        		atonLoopCounter++;
+        	if(atonLoopCounter > 49 && atonLoopCounter < 350){ //After 1 second, drive for 6 seconds
+                SmartDashboard.putNumber("Error", (angle*Kp)); //Send X error to dashboard
+        		driveSchedulerX = angle*Kp; //Drive the the oppiste of our x error to correct
+        		driveSchedulerY = -0.9; //Drive backwards  at 90%
+        		SmartDashboard.putString("Auto Status: ", "Driving Backward"); //Send status to dashboard
+        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+        		atonLoopCounter++; //Add 1 to our counter
         	}
         	if(atonLoopCounter >349 && atonLoopCounter < 355){
-        		driveSchedulerX = 0.0;
-        		driveSchedulerY = 0.0;
-        		autoStop = true;
-        		atonLoopCounter++;
-        		SmartDashboard.putString("Auto Status: ", "Stopped");
+        		driveSchedulerX = 0.0; //Turn off motors
+        		driveSchedulerY = 0.0; //Turn off motors
+        		autoStop = true; //Tell auto to stop
+        		atonLoopCounter++; //Add 1 to our counter
+        		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
+        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
         	}
-        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
+        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
     	}
     }
 
     public void teleopPeriodic() {
     	//Compressor
-    	c.setClosedLoopControl(true);
+    	c.setClosedLoopControl(true); //Run the compressor on a closed loop
     	
     	//Gyro
-    	double angle = gyro.getAngle(); // get current heading
+    	double angle = gyro.getAngle(); //Set angle equal to the gyro's angle
     	SmartDashboard.putNumber("Angle: ", angle);
     	gyroSetButton = stick.getRawButton(5);
     	if(gyroSetButton == true){
@@ -207,8 +221,8 @@ public class Robot extends IterativeRobot {
     	}
     	
     	//Ball Plunger
-    	buttonValue = stick.getRawButton(1);
-    	if(buttonValue == true){
+    	plungerButton = stick.getRawButton(1);
+    	if(plungerButton == true){
     		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
     		SmartDashboard.putString("Plunger Status: ", "Out");
     	}
