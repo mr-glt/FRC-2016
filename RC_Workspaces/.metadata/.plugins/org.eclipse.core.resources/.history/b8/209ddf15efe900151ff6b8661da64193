@@ -165,41 +165,41 @@ public class Robot extends IterativeRobot {
     	}
     	
     	//Shooter Wheel
-    	spinShooterwheelForward = stick.getRawButton(4); //Create a button for shooter wheel forward
-    	spinShooterwheelBackward = stick.getRawButton(3); //Create a button for shooter wheel backward
+    	spinShooterwheelForward = stick.getRawButton(4);
+    	spinShooterwheelBackward = stick.getRawButton(3);
         if(spinShooterwheelForward == true && spinShooterwheelBackward == false){
-        	flyWheel.set(-1); //Spin wheel forward
+        	flyWheel.set(-1);
         	SmartDashboard.putString("Shooter Wheel: ", "Shooting");
         }
         if(spinShooterwheelBackward == true && spinShooterwheelForward == false){
-        	flyWheel.set(1); //Spin wheel backward
+        	flyWheel.set(1);
         	SmartDashboard.putString("Shooter Wheel: ", "Picking Up");
         }
         if(spinShooterwheelBackward == false && spinShooterwheelForward == false){
-        	flyWheel.set(0); //Stop wheel
+        	flyWheel.set(0);
         	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
     	
         //Dust Pan Moving Code
-    	upButton = stick.getRawButton(9); //Create a button to move dust pan up
-    	downButton = stick.getRawButton(10); //Create a button to move dust pan down
+    	upButton = stick.getRawButton(9);
+    	downButton = stick.getRawButton(10);
     	if(upButton == true && downButton == false){
-    		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
-    		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
-    		dustpanUpStatus = true; //Bool to say dust pan is up
-    		triggerClose = true; //Trigger the locks
+    		dustPanSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Dustpan Status: ", "Up");
+    		dustpanUpStatus = true;
+    		triggerClose = true;
     	}
     	if(downButton == true && upButton == false){
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Dustpan Status: ", "Down");
-    		dustpanUpStatus = false; //Bool to say dust pan is down
-    		triggerLocks = true; //Trigger locks
+    		dustpanUpStatus = false;
+    		triggerLocks = true;
     	}
     	
         //Dust Pan Locks
-    	locksButtonValue = stick.getRawButton(11); //Create button to toggle locks
+    	locksButtonValue = stick.getRawButton(11);
     	if(locksButtonValue == true || locksEngaded == true || triggerLocks == true){
-    		stops.set(DoubleSolenoid.Value.kForward); //Set locks out
+    		stops.set(DoubleSolenoid.Value.kForward);
     		locksEngaded = true;
     		triggerLocks = false;
     	}
@@ -207,38 +207,38 @@ public class Robot extends IterativeRobot {
     		stops.set(DoubleSolenoid.Value.kReverse);
     	}
     	
-    	locksButtonCloseValue = stick.getRawButton(12); //Create a button to close locks
+    	locksButtonCloseValue = stick.getRawButton(12);
     	if(locksButtonCloseValue == true || triggerClose == true){
-    		stops.set(DoubleSolenoid.Value.kReverse); //Shut locks
+    		stops.set(DoubleSolenoid.Value.kReverse);
     		locksEngaded = false;
     		triggerClose = false;
     	}
     	if(locksEngaded == false){
-    		SmartDashboard.putString("Locks Status: ", "Out"); //Send status
+    		SmartDashboard.putString("Locks Status: ", "Out");
     	}
     	if(locksEngaded == true){
-    		SmartDashboard.putString("Locks Status: ", "In"); //Send status
+    		SmartDashboard.putString("Locks Status: ", "In");
     	}
     	
     	//Ball Plunger
-    	plungerButton = stick.getRawButton(1); //Create a button to control the plunger
+    	plungerButton = stick.getRawButton(1);
     	if(plungerButton == true){
-    		ballPlungerSol.set(DoubleSolenoid.Value.kForward); //Set plunger out
-    		SmartDashboard.putString("Plunger Status: ", "Out"); //Send status
+    		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Plunger Status: ", "Out");
     	}
     	else{
-    		ballPlungerSol.set(DoubleSolenoid.Value.kReverse); //Set plunger in
-    		SmartDashboard.putString("Plunger Status: ", "In"); //Send status
+    		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Plunger Status: ", "In");
     	}
     	
     	//Drivetrain
-    	SmartDashboard.putNumber("X Drive Value: ", driveSchedulerX); //Send status
-    	SmartDashboard.putNumber("Y Drive Value: ", driveSchedulerY); //Send status
-    	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
+    	SmartDashboard.putNumber("X Drive Value: ", driveSchedulerX);
+    	SmartDashboard.putNumber("Y Drive Value: ", driveSchedulerY);
+    	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
     }
     
-    public void testPeriodic() { //Used to pressurize before a match
-    	c.setClosedLoopControl(true); //Turn compressor on closed loop
+    public void testPeriodic() {
+    	c.setClosedLoopControl(true);
     }
     
 }

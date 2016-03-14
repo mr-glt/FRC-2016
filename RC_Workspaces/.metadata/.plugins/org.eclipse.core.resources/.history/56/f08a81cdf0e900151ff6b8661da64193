@@ -223,22 +223,22 @@ public class Robot extends IterativeRobot {
     	//Ball Plunger
     	plungerButton = stick.getRawButton(1); //Create a button to control the plunger
     	if(plungerButton == true){
-    		ballPlungerSol.set(DoubleSolenoid.Value.kForward); //Set plunger out
-    		SmartDashboard.putString("Plunger Status: ", "Out"); //Send status
+    		ballPlungerSol.set(DoubleSolenoid.Value.kForward);
+    		SmartDashboard.putString("Plunger Status: ", "Out");
     	}
     	else{
-    		ballPlungerSol.set(DoubleSolenoid.Value.kReverse); //Set plunger in
-    		SmartDashboard.putString("Plunger Status: ", "In"); //Send status
+    		ballPlungerSol.set(DoubleSolenoid.Value.kReverse);
+    		SmartDashboard.putString("Plunger Status: ", "In");
     	}
     	
     	//Drivetrain
-    	SmartDashboard.putNumber("X Drive Value: ", driveSchedulerX); //Send status
-    	SmartDashboard.putNumber("Y Drive Value: ", driveSchedulerY); //Send status
-    	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
+    	SmartDashboard.putNumber("X Drive Value: ", driveSchedulerX);
+    	SmartDashboard.putNumber("Y Drive Value: ", driveSchedulerY);
+    	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY);
     }
     
-    public void testPeriodic() { //Used to pressurize before a match
-    	c.setClosedLoopControl(true); //Turn compressor on closed loop
+    public void testPeriodic() {
+    	c.setClosedLoopControl(true);
     }
     
 }
