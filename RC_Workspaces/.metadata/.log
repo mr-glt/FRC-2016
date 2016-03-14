@@ -4900,3 +4900,267 @@ java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+!SESSION 2016-03-14 10:31:06.448 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-03-14 10:31:30.627
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:30.998
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.getIndexDiffDataOrNull(GitLightweightDecorator.java:218)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorateResource(GitLightweightDecorator.java:192)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorate(GitLightweightDecorator.java:178)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:267)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:83)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:367)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:349)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:372)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:332)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:31.283
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.core.IteratorService.isProjectSharedWithGit(IteratorService.java:112)
+	at org.eclipse.egit.core.IteratorService.isValid(IteratorService.java:108)
+	at org.eclipse.egit.core.IteratorService.findContainer(IteratorService.java:83)
+	at org.eclipse.egit.core.AdaptableFileTreeIterator.createSubtreeIterator(AdaptableFileTreeIterator.java:82)
+	at org.eclipse.jgit.treewalk.AbstractTreeIterator.createSubtreeIterator(AbstractTreeIterator.java:535)
+	at org.eclipse.jgit.treewalk.TreeWalk.enterSubtree(TreeWalk.java:924)
+	at org.eclipse.jgit.treewalk.TreeWalk.next(TreeWalk.java:578)
+	at org.eclipse.jgit.lib.IndexDiff.diff(IndexDiff.java:434)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.calcIndexDiffDataFull(IndexDiffCacheEntry.java:534)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.access$6(IndexDiffCacheEntry.java:523)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry$4.run(IndexDiffCacheEntry.java:290)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:31.383
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.core.IteratorService.isProjectSharedWithGit(IteratorService.java:112)
+	at org.eclipse.egit.core.IteratorService.isValid(IteratorService.java:108)
+	at org.eclipse.egit.core.IteratorService.findContainer(IteratorService.java:93)
+	at org.eclipse.egit.core.AdaptableFileTreeIterator.createSubtreeIterator(AdaptableFileTreeIterator.java:82)
+	at org.eclipse.jgit.treewalk.AbstractTreeIterator.createSubtreeIterator(AbstractTreeIterator.java:535)
+	at org.eclipse.jgit.treewalk.TreeWalk.enterSubtree(TreeWalk.java:924)
+	at org.eclipse.jgit.treewalk.TreeWalk.next(TreeWalk.java:578)
+	at org.eclipse.jgit.lib.IndexDiff.diff(IndexDiff.java:434)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.calcIndexDiffDataFull(IndexDiffCacheEntry.java:534)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.access$6(IndexDiffCacheEntry.java:523)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry$4.run(IndexDiffCacheEntry.java:290)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:31.884
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.getIndexDiffDataOrNull(GitLightweightDecorator.java:218)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorateResource(GitLightweightDecorator.java:192)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorate(GitLightweightDecorator.java:178)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:267)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:83)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:367)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:349)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:372)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:332)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:32.224
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.core.IteratorService.isProjectSharedWithGit(IteratorService.java:112)
+	at org.eclipse.egit.core.IteratorService.isValid(IteratorService.java:108)
+	at org.eclipse.egit.core.IteratorService.findContainer(IteratorService.java:83)
+	at org.eclipse.egit.core.AdaptableFileTreeIterator.createSubtreeIterator(AdaptableFileTreeIterator.java:82)
+	at org.eclipse.jgit.treewalk.AbstractTreeIterator.createSubtreeIterator(AbstractTreeIterator.java:535)
+	at org.eclipse.jgit.treewalk.TreeWalk.enterSubtree(TreeWalk.java:924)
+	at org.eclipse.jgit.treewalk.TreeWalk.next(TreeWalk.java:578)
+	at org.eclipse.jgit.lib.IndexDiff.diff(IndexDiff.java:434)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.calcIndexDiffDataFull(IndexDiffCacheEntry.java:534)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.access$6(IndexDiffCacheEntry.java:523)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry$4.run(IndexDiffCacheEntry.java:290)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:32.231
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.core.IteratorService.isProjectSharedWithGit(IteratorService.java:112)
+	at org.eclipse.egit.core.IteratorService.isValid(IteratorService.java:108)
+	at org.eclipse.egit.core.IteratorService.findContainer(IteratorService.java:93)
+	at org.eclipse.egit.core.AdaptableFileTreeIterator.createSubtreeIterator(AdaptableFileTreeIterator.java:82)
+	at org.eclipse.jgit.treewalk.AbstractTreeIterator.createSubtreeIterator(AbstractTreeIterator.java:535)
+	at org.eclipse.jgit.treewalk.TreeWalk.enterSubtree(TreeWalk.java:924)
+	at org.eclipse.jgit.treewalk.TreeWalk.next(TreeWalk.java:578)
+	at org.eclipse.jgit.lib.IndexDiff.diff(IndexDiff.java:434)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.calcIndexDiffDataFull(IndexDiffCacheEntry.java:534)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.access$6(IndexDiffCacheEntry.java:523)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry$4.run(IndexDiffCacheEntry.java:290)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:32.799
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:326)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:306)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.getIndexDiffDataOrNull(GitLightweightDecorator.java:218)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorateResource(GitLightweightDecorator.java:192)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorate(GitLightweightDecorator.java:178)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:267)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:83)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:367)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:349)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:372)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:332)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-03-14 10:31:37.917
+!MESSAGE Git team provider configuration has gone missing.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Charlie\Desktop\FRC-2016\RC_Workspaces\.metadata\.plugins\org.eclipse.core.resources\.projects\test\org.eclipse.egit.core\GitProjectData.properties (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:450)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:206)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.GitProvider.getMoveDeleteHook(GitProvider.java:73)
+	at org.eclipse.team.internal.core.MoveDeleteManager.getHookFor(MoveDeleteManager.java:34)
+	at org.eclipse.team.internal.core.MoveDeleteManager.deleteProject(MoveDeleteManager.java:74)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1834)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.equinox.ds 2 0 2016-03-14 10:31:39.471
+!MESSAGE Getting a lock required more than 10000 ms. There might be a synchronization problem in this callstack or just the build/dispose process of some components took too long! 
+!STACK 0
+java.lang.Exception: Debug stacktrace
+	at org.eclipse.equinox.internal.ds.InstanceProcess.getLock(InstanceProcess.java:120)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:560)
+	at org.eclipse.equinox.internal.ds.ServiceReg.getService(ServiceReg.java:53)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceFactoryUse$1.run(ServiceFactoryUse.java:212)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceFactoryUse.factoryGetService(ServiceFactoryUse.java:210)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceFactoryUse.getService(ServiceFactoryUse.java:111)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceConsumer$2.getService(ServiceConsumer.java:45)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:496)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.getService(ServiceRegistry.java:461)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.getService(BundleContextImpl.java:619)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.addingService(ProvisioningAgent.java:159)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:941)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:1)
+	at org.osgi.util.tracker.AbstractTracked.trackAdding(AbstractTracked.java:256)
+	at org.osgi.util.tracker.AbstractTracked.trackInitial(AbstractTracked.java:183)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:318)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:261)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.getService(ProvisioningAgent.java:66)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.<clinit>(SetupCoreUtil.java:96)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:382)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:41.064
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:41.079
+!MESSAGE Install necessary for tools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:42.307
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:42.319
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:42.348
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:42.365
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-03-14 10:31:42.394
+!MESSAGE Installedjava
