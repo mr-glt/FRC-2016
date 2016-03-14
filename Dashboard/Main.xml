@@ -1,0 +1,65 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Dustpan Status: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="283"/>
+	</widget>
+	<widget field="Y Drive Value: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="262"/>
+	</widget>
+	<widget field="X Drive Value: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="241"/>
+	</widget>
+	<widget field="Plunger Status: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="220"/>
+	</widget>
+	<widget field="Locks Status: " type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="199"/>
+	</widget>
+	<widget field="Shooter Wheel: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="178"/>
+	</widget>
+	<widget field="Slow Mode: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="157"/>
+	</widget>
+	<widget field="Inverted Drive: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="136"/>
+	</widget>
+	<widget field="Angle: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="115"/>
+	</widget>
+	<static-widget class="edu.wpi.grip.smartdashboard.GRIPExtension">
+		<location x="395" y="6"/>
+		<width>746</width>
+		<height>467</height>
+		<property name="GRIP Address" value="roboRIO-6027-FRC.local"/>
+	</static-widget>
+	<widget field="Auto choices" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="0" y="48"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="1157" y="24"/>
+		<width>421</width>
+		<height>30</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="1348" y="70"/>
+		<property name="Text" value="Drivetrain:"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="6" y="15"/>
+		<width>375</width>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="399" y="479"/>
+		<property name="Text" value="Autonomous:"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="119" y="58"/>
+		<width>95</width>
+		<height>27</height>
+		<property name="Text" value="Dust Pan Status:"/>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
