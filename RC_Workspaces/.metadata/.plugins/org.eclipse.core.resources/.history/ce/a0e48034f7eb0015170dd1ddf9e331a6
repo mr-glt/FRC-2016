@@ -133,28 +133,21 @@ public class Robot extends IterativeRobot {
         		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
         		atonLoopCounter++; //Add 1 to our counter
         	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 200){ //After 1 second, drive for 6 seconds
+        	if(atonLoopCounter > 49 && atonLoopCounter < 350){ //After 1 second, drive for 6 seconds
         		SmartDashboard.putString("Auto Status: ", "Spining Up"); //Send status to dashboard
         		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		flyWheel.set(-1); //Turns on fly wheel
+        		flyWheel.set(-1);
         		atonLoopCounter++; //Add 1 to our counter
         	}
-        	if(atonLoopCounter > 199 && atonLoopCounter < 250){
-        		flyWheel.set(-1); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kForward); //Set plunger out
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Out"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	if(atonLoopCounter > 249 && atonLoopCounter < 300){
-        		flyWheel.set(0); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kReverse); //Set plunger in
+        	if(atonLoopCounter >349 && atonLoopCounter < 355){
+        		driveSchedulerX = 0.0; //Turn off motors
+        		driveSchedulerY = 0.0; //Turn off motors
         		autoStop = true; //Tell auto to stop
         		atonLoopCounter++; //Add 1 to our counter
         		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
         		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
         	}
-        	
+        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
         }
     	 
     }

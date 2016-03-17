@@ -95,8 +95,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Angle: ", angle); //Send the angle to the dashboard
 		
     	/* Auto Loop */
-    	/*
-		if(autoStop == false){ //Check if we are done
+    	if(autoStop == false){ //Check if we are done
     		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
         		stops.set(DoubleSolenoid.Value.kReverse); //Put out stop
         		dustPanSol.set(DoubleSolenoid.Value.kReverse); //Drop dust pan
@@ -123,40 +122,6 @@ public class Robot extends IterativeRobot {
         	}
         	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
     	}
-    	*/
-    	
-    	if(autoStop == false){ //Check if we are done
-    		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
-        		gyro.calibrate(); //Calibrate the gyro
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //Lifts dust pan
-        		SmartDashboard.putString("Auto Status: ", "Up and Calibrate"); //Send status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		atonLoopCounter++; //Add 1 to our counter
-        	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 200){ //After 1 second, drive for 6 seconds
-        		SmartDashboard.putString("Auto Status: ", "Spining Up"); //Send status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		flyWheel.set(-1); //Turns on fly wheel
-        		atonLoopCounter++; //Add 1 to our counter
-        	}
-        	if(atonLoopCounter > 199 && atonLoopCounter < 250){
-        		flyWheel.set(-1); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kForward); //Set plunger out
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Out"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	if(atonLoopCounter > 249 && atonLoopCounter < 300){
-        		flyWheel.set(0); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kReverse); //Set plunger in
-        		autoStop = true; //Tell auto to stop
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	
-        }
-    	 
     }
 
     public void teleopPeriodic() {
@@ -174,14 +139,14 @@ public class Robot extends IterativeRobot {
     	//Drivetrain
     	invertButton = controller.getRawButton(5); //Create a button to invert the steering
     	if(invertButton == false){ //Check for button update
-        	double controllerLY = controller.getRawAxis(4) * -0.7; //Invert the axis
+        	double controllerLY = controller.getRawAxis(4) * -1; //Invert the axis
         	double controllerRX = controller.getRawAxis(1) * -1; //Invert the axis
         	driveSchedulerY = controllerLY; //Drive to controller
         	driveSchedulerX = controllerRX; //Drive to controller
         	SmartDashboard.putString("Inverted Drive: ", "Off"); //Send status to SmartDashboard
     	}
     	else{
-        	double controllerLY = controller.getRawAxis(4) * 0.7; //Drive to controller
+        	double controllerLY = controller.getRawAxis(4) * 1; //Drive to controller
         	double controllerRX = controller.getRawAxis(1) * 1; //Drive to controller
         	driveSchedulerY = controllerLY; //Drive
         	driveSchedulerX = controllerRX; // Drive

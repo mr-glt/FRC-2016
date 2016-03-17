@@ -129,32 +129,27 @@ public class Robot extends IterativeRobot {
     		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
         		gyro.calibrate(); //Calibrate the gyro
         		dustPanSol.set(DoubleSolenoid.Value.kForward); //Lifts dust pan
-        		SmartDashboard.putString("Auto Status: ", "Up and Calibrate"); //Send status to dashboard
+        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate"); //Send status to dashboard
         		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
         		atonLoopCounter++; //Add 1 to our counter
         	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 200){ //After 1 second, drive for 6 seconds
-        		SmartDashboard.putString("Auto Status: ", "Spining Up"); //Send status to dashboard
+        	if(atonLoopCounter > 49 && atonLoopCounter < 350){ //After 1 second, drive for 6 seconds
+                SmartDashboard.putNumber("Error", (angle*Kp)); //Send X error to dashboard
+        		driveSchedulerX = angle*Kp; //Drive the the oppiste of our x error to correct
+        		driveSchedulerY = -0.7; //Drive backwards  at 90%
+        		SmartDashboard.putString("Auto Status: ", "Driving Backward"); //Send status to dashboard
         		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		flyWheel.set(-1); //Turns on fly wheel
         		atonLoopCounter++; //Add 1 to our counter
         	}
-        	if(atonLoopCounter > 199 && atonLoopCounter < 250){
-        		flyWheel.set(-1); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kForward); //Set plunger out
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Out"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	if(atonLoopCounter > 249 && atonLoopCounter < 300){
-        		flyWheel.set(0); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kReverse); //Set plunger in
+        	if(atonLoopCounter >349 && atonLoopCounter < 355){
+        		driveSchedulerX = 0.0; //Turn off motors
+        		driveSchedulerY = 0.0; //Turn off motors
         		autoStop = true; //Tell auto to stop
         		atonLoopCounter++; //Add 1 to our counter
         		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
         		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
         	}
-        	
+        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
         }
     	 
     }
