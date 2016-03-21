@@ -1,5 +1,20 @@
 <xml version="1.0">
 <dashboard>
+	<static-widget class="edu.wpi.grip.smartdashboard.GRIPExtension">
+		<location x="390" y="4"/>
+		<width>764</width>
+		<height>469</height>
+		<property name="GRIP Address" value="roboRIO-6027-FRC.local"/>
+	</static-widget>
+	<widget field="Error" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="21" y="325"/>
+	</widget>
+	<widget field="Loop Number: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="21" y="304"/>
+	</widget>
+	<widget field="Auto Status: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="21" y="86"/>
+	</widget>
 	<widget field="Dustpan Status: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="283"/>
 	</widget>
@@ -12,7 +27,7 @@
 	<widget field="Plunger Status: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="220"/>
 	</widget>
-	<widget field="Locks Status: " type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="Locks Status: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="199"/>
 	</widget>
 	<widget field="Shooter Wheel: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
@@ -26,15 +41,6 @@
 	</widget>
 	<widget field="Angle: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="115"/>
-	</widget>
-	<static-widget class="edu.wpi.grip.smartdashboard.GRIPExtension">
-		<location x="395" y="6"/>
-		<width>746</width>
-		<height>467</height>
-		<property name="GRIP Address" value="roboRIO-6027-FRC.local"/>
-	</static-widget>
-	<widget field="Auto choices" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="0" y="48"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
 		<location x="1157" y="24"/>
@@ -61,5 +67,55 @@
 	</static-widget>
 </dashboard>
 <live-window>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Talon[0]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="16"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="Talon[1]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="62"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="Talon[8]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="108"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="DoubleSolenoid[0,1]" type="Double Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.RelayController">
+			<location x="6" y="154"/>
+			<height>20</height>
+			<width>293</width>
+		</widget>
+		<widget field="Talon[9]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="174"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="CANTalon[0]" type="CANSpeedController" class="edu.wpi.first.smartdashboard.livewindow.elements.CANSpeedController">
+			<location x="6" y="220"/>
+			<height>141</height>
+			<width>293</width>
+		</widget>
+		<widget field="DoubleSolenoid[0,2]" type="Double Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.RelayController">
+			<location x="6" y="361"/>
+			<height>20</height>
+			<width>293</width>
+		</widget>
+		<widget field="ADXRS450_Gyro[0]" type="Gyro" class="edu.wpi.first.smartdashboard.gui.elements.Compass">
+			<location x="6" y="381"/>
+			<height>150</height>
+			<width>293</width>
+		</widget>
+		<widget field="DoubleSolenoid[0,4]" type="Double Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.RelayController">
+			<location x="6" y="531"/>
+			<height>20</height>
+			<width>293</width>
+		</widget>
+		<location x="0" y="0"/>
+		<width>305</width>
+		<height>558</height>
+	</widget>
 </live-window>
 </xml>
