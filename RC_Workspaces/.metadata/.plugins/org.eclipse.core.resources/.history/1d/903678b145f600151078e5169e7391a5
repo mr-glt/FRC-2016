@@ -1,0 +1,40 @@
+package org.usfirst.frc.team6027.robot.subsystems;
+
+import org.usfirst.frc.team6027.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+/**
+ *
+ */
+public class Drivetrain extends Subsystem {
+    
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        setDefaultCommand(new DrivetrainDoNothing());
+    	//RobotMap.merlin.arcadeDrive(RobotMap.stick);
+    }
+    public void normalDrive(){
+    	RobotMap.merlin.arcadeDrive(RobotMap.stick);
+    	//Gyro
+    	double angle = gyro.getAngle(); //Set angle equal to the gyro's angle
+    	SmartDashboard.putNumber("Angle: ", angle); //Send Angle to SmartDashboard
+    	gyroSetButton = stick.getRawButton(5); //Create a button to calibrate the gyro
+    	if(gyroSetButton == true){ //Check for button status
+    		gyro.calibrate(); //Calibrate gyro to current angle
+    	}
+    	
+    	//Drivetrain
+        	double controllerLY = RobotMap.controller.getRawAxis(4) * -1; //Invert the axis
+        	double controllerRX = RobotMap.controller.getRawAxis(1) * -1; //Invert the axis
+    
+        	RobotMap.driveSchedulerY = controllerLY; //Drive to controller
+        	RobotMap.driveSchedulerX = controllerRX; //Drive to controller
+        	SmartDashboard.putString("Inverted Drive: ", "Off"); //Send status to SmartDashboard
+    }
+}
+

@@ -2,17 +2,14 @@
 package org.usfirst.frc.team6027.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.io.IOException;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.VictorSP;
 
 public class Robot extends IterativeRobot {
 	
@@ -97,7 +94,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Angle: ", angle); //Send the angle to the dashboard
 		
     	/* Auto Loop */
-    	
 		if(autoStop == false){ //Check if we are done
     		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
         		stops.set(DoubleSolenoid.Value.kReverse); //Put out stop
@@ -125,40 +121,6 @@ public class Robot extends IterativeRobot {
         	}
         	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
     	}
-    	
-    	/*
-    	if(autoStop == false){ //Check if we are done
-    		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
-        		gyro.calibrate(); //Calibrate the gyro
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //Lifts dust pan
-        		SmartDashboard.putString("Auto Status: ", "Up and Calibrate"); //Send status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		atonLoopCounter++; //Add 1 to our counter
-        	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 200){ //After 1 second, drive for 6 seconds
-        		SmartDashboard.putString("Auto Status: ", "Spining Up"); //Send status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		flyWheel.set(-1); //Turns on fly wheel
-        		atonLoopCounter++; //Add 1 to our counter
-        	}
-        	if(atonLoopCounter > 199 && atonLoopCounter < 250){
-        		flyWheel.set(-1); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kForward); //Set plunger out
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Out"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	if(atonLoopCounter > 249 && atonLoopCounter < 300){
-        		flyWheel.set(0); //Turns on fly wheel
-        		ballPlungerSol.set(DoubleSolenoid.Value.kReverse); //Set plunger in
-        		autoStop = true; //Tell auto to stop
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	
-        }
-    	 */
     }
 
     public void teleopPeriodic() {
@@ -178,6 +140,7 @@ public class Robot extends IterativeRobot {
     	if(invertButton == false){ //Check for button update
         	double controllerLY = controller.getRawAxis(4) * -1; //Invert the axis
         	double controllerRX = controller.getRawAxis(1) * -1; //Invert the axis
+    
         	driveSchedulerY = controllerLY; //Drive to controller
         	driveSchedulerX = controllerRX; //Drive to controller
         	SmartDashboard.putString("Inverted Drive: ", "Off"); //Send status to SmartDashboard
@@ -276,7 +239,7 @@ public class Robot extends IterativeRobot {
     
     public void testPeriodic() { //Used to pressurize before a match
     	c.setClosedLoopControl(true); //Turn compressor on closed loop
-    	dustPanSol.set(DoubleSolenoid.Value.kForward);
+    	dustPanSol.set(DoubleSolenoid.Value.kForward); //Set dustpan up
     }
     
 }

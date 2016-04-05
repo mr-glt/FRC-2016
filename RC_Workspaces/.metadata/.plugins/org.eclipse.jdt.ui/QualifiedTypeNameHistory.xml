@@ -4,4 +4,9 @@
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Victor"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.VictorSP"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Jaguar"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.command.Subsystem"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6027.robot.RobotMap"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6027.robot.subsystems.Drivetrain"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6027.robot.commands.DrivetrainDoNothing"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6027.robot.Robot"/>
 </qualifiedTypeNameHistroy>
