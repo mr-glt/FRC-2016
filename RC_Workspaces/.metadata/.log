@@ -8212,3 +8212,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-01 19:46:10.073
 !MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2016-05-01 21:16:07.723
+!MESSAGE Project: test Package: org.usfirst.frc.team6027.robot Project Type: edu.wpi.first.wpilib.plugins.java.wizards.newproject.JavaProjectType$2@2c988de6

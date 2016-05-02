@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6027.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.io.IOException;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -12,6 +13,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class Robot extends IterativeRobot {
+	//Auto Smartdashboard
+    final String defaultAuto = "Default";
+    final String customAuto = "My Auto";
+    final String friesAuto = "Shriveled Fries";
+    String autoSelected;
+    SendableChooser chooser;
 	
     //Drivetrain
     RobotDrive merlin; //Create New Robot Drive
@@ -26,7 +33,7 @@ public class Robot extends IterativeRobot {
 	DoubleSolenoid stops = new DoubleSolenoid(1, 6); //This solenoid runs the stop on the side of the bot.
 	
 	//Speed Controllers
-	CANTalon flyWheel = new CANTalon(0); //Old speed controller, need to remove
+	CANTalon flyWheel = new CANTalon(0); //Fly Wheel Speed Controller
 
 	//Gyro
 	ADXRS450_Gyro gyro; //SPI gyro from FIRST Choice
@@ -50,17 +57,26 @@ public class Robot extends IterativeRobot {
 	boolean autoStop = false; //Create a bool for stopping auto mode
 	boolean triggerLocks = false; //Create a bool to trigger locks
 	boolean triggerClose = false; //Create a bool to shut locks
+	boolean ignoreDistance = false;
 	
 	//Doubles
 	double Kp = 0.03; //Constant used to drive forward in a line
 	double driveSchedulerX; //Used to hold X drive value so it can be modified multiple times
 	double driveSchedulerY; //Used to hold Y drive value so it can be modified multiple times
+	double distanceForward;
 
 	//Ints
 	int atonLoopCounter; //Loop used to order auto mode
 	
     public void robotInit() {
-        //Drivetrain
+        //Auto Smartdashboard Chooser
+        chooser = new SendableChooser();
+        chooser.addDefault("Default Auto", defaultAuto);
+        chooser.addObject("My Auto", customAuto);
+        chooser.addObject("Shriveled Fries", friesAuto);
+        SmartDashboard.putData("Auto choices", chooser);
+    	
+    	//Drivetrain
     	merlin = new RobotDrive(0,9,1,8); //Assign robotdrive on the 4 pwm pins
     	
     	//Controllers
@@ -82,7 +98,8 @@ public class Robot extends IterativeRobot {
     }
     
     public void autonomousInit() {
-    	//No init code
+    	autoSelected = (String) chooser.getSelected();
+		System.out.println("Auto selected: " + autoSelected);
     }
 
     public void autonomousPeriodic() {
@@ -92,34 +109,81 @@ public class Robot extends IterativeRobot {
     	//Gyro
     	double angle = gyro.getAngle(); //Set angle equal to the gyro's angle
 		SmartDashboard.putNumber("Angle: ", angle); //Send the angle to the dashboard
-		
-    	/* Auto Loop */
-		if(autoStop == false){ //Check if we are done
-    		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
-        		stops.set(DoubleSolenoid.Value.kReverse); //Put out stop
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse); //Drop dust pan
-        		
-        		SmartDashboard.putString("Auto Status: ", "Down and Calibrate"); //Send status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		atonLoopCounter++; //Add 1 to our counter
-        	}
-        	if(atonLoopCounter > 49 && atonLoopCounter < 350){ //After 1 second, drive for 6 seconds
-                SmartDashboard.putNumber("Error", (angle*Kp)); //Send X error to dashboard
+    	
+		switch(autoSelected) {
+    	case customAuto:
+ 
+    	case defaultAuto:
+    	default:
+    		if(autoStop == false){ //Check if we are done
+        		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
+            		stops.set(DoubleSolenoid.Value.kReverse); //Put out stop
+            		dustPanSol.set(DoubleSolenoid.Value.kReverse); //Drop dust pan
+            		
+            		SmartDashboard.putString("Auto Status: ", "Down and Calibrate"); //Send status to dashboard
+            		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+            		atonLoopCounter++; //Add 1 to our counter
+            	}
+            	if(atonLoopCounter > 49 && atonLoopCounter < 350){ //After 1 second, drive for 6 seconds
+                    SmartDashboard.putNumber("Error", (angle*Kp)); //Send X error to dashboard
+            		driveSchedulerY = 0.0; //Drive the the oppiste of our x error to correct
+            		driveSchedulerX = -0.85; //Drive backwards  at 90%
+            		SmartDashboard.putString("Auto Status: ", "Driving Backward"); //Send status to dashboard
+            		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+            		atonLoopCounter++; //Add 1 to our counter
+            	}
+            	if(atonLoopCounter >349 && atonLoopCounter < 355){
+            		driveSchedulerX = 0.0; //Turn off motors
+            		driveSchedulerY = 0.0; //Turn off motors
+            		autoStop = true; //Tell auto to stop
+            		atonLoopCounter++; //Add 1 to our counter
+            		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
+            		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+            	}
+            	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
+        	} 
+    	case friesAuto:
+    		if(1<2 && ignoreDistance == false){
+        		stops.set(DoubleSolenoid.Value.kForward); //Put stop in
+        		dustPanSol.set(DoubleSolenoid.Value.kForward); //Dust pan up
+        		SmartDashboard.putString("Auto Status: ", "Up and Forward"); //Send status to dashboard
+        		SmartDashboard.putNumber("Distance Forward", distanceForward);	//Send loop to dashboard
         		driveSchedulerY = 0.0; //Drive the the oppiste of our x error to correct
-        		driveSchedulerX = -0.85; //Drive backwards  at 90%
-        		SmartDashboard.putString("Auto Status: ", "Driving Backward"); //Send status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        		atonLoopCounter++; //Add 1 to our counter
-        	}
-        	if(atonLoopCounter >349 && atonLoopCounter < 355){
-        		driveSchedulerX = 0.0; //Turn off motors
-        		driveSchedulerY = 0.0; //Turn off motors
-        		autoStop = true; //Tell auto to stop
-        		atonLoopCounter++; //Add 1 to our counter
-        		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
-        		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
-        	}
-        	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
+        		driveSchedulerX = 0.30; //Drive forward at  at 30%
+    		}
+    		if(1<2 || ignoreDistance == true){
+    			ignoreDistance = true;
+    			if(autoStop == false){ //Check if we are done
+            		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
+            			SmartDashboard.putString("Auto Status: ", "Holding Position"); //Send status to dashboard
+            			SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+                		atonLoopCounter++; //Add 1 to our counter
+                	}
+                	if(atonLoopCounter > 49 && atonLoopCounter < 150){ //After 1 second, drive for 6 seconds
+                		stops.set(DoubleSolenoid.Value.kForward); //Put stop in
+                		dustPanSol.set(DoubleSolenoid.Value.kReverse); //Dust pan up
+                		SmartDashboard.putString("Auto Status: ", "Dropping Dustpan"); //Send status to dashboard
+                		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+                		atonLoopCounter++; //Add 1 to our counter
+                	}
+                	if(atonLoopCounter >149 && atonLoopCounter < 400){
+                		driveSchedulerY = 0.0; //Drive the the oppiste of our x error to correct
+                		driveSchedulerX = 0.60; //Drive forward at  at 60%
+                		atonLoopCounter++; //Add 1 to our counter
+                		SmartDashboard.putString("Auto Status: ", "Driving Forward"); //Send Status to dashboard
+                		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+                	}
+                	if(atonLoopCounter >399 && atonLoopCounter < 420){
+                		driveSchedulerY = 0.0; //Drive the the oppiste of our x error to correct
+                		driveSchedulerX = 0.0; //Drive forward at  at 0%
+                		autoStop = true; //Tell auto to stop
+                		atonLoopCounter++; //Add 1 to our counter
+                		SmartDashboard.putString("Auto Status: ", "Stopped"); //Send Status to dashboard
+                		SmartDashboard.putNumber("Loop Number: ", atonLoopCounter);	//Send loop to dashboard
+                	}
+            	} 
+    		}
+    		merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
     	}
     }
 
