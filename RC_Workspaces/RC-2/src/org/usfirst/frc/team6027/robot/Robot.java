@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.io.IOException;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -40,7 +41,9 @@ public class Robot extends IterativeRobot {
 
 	//Compressor
 	Compressor c = new Compressor(0); //Create compressor 'c' on 0
-
+	//Ultrasonic Sensor
+	AnalogInput ultrasonic;
+	
 	//Booleans
 	boolean plungerButton; //Create a bool for our plunger button
 	boolean upButton; //Create a bool for our dust pan up button
@@ -63,8 +66,9 @@ public class Robot extends IterativeRobot {
 	double Kp = 0.03; //Constant used to drive forward in a line
 	double driveSchedulerX; //Used to hold X drive value so it can be modified multiple times
 	double driveSchedulerY; //Used to hold Y drive value so it can be modified multiple times
-	double distanceForward;
-
+	double currentDistance;
+	final double valueToInches = 0.125; //Used for ultrasonic
+	
 	//Ints
 	int atonLoopCounter; //Loop used to order auto mode
 	
@@ -109,7 +113,9 @@ public class Robot extends IterativeRobot {
     	//Gyro
     	double angle = gyro.getAngle(); //Set angle equal to the gyro's angle
 		SmartDashboard.putNumber("Angle: ", angle); //Send the angle to the dashboard
-    	
+    	//Ultrasonic
+    	currentDistance = ultrasonic.getValue()*valueToInches;
+    	SmartDashboard.putNumber("Distance Forward", currentDistance);
 		switch(autoSelected) {
     	case customAuto:
  
@@ -143,7 +149,7 @@ public class Robot extends IterativeRobot {
             	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
         	} 
     	case friesAuto:
-    		if(1<2 && ignoreDistance == false){
+    		if(currentDistance > 6 && ignoreDistance == false){
         		stops.set(DoubleSolenoid.Value.kForward); //Put stop in
         		dustPanSol.set(DoubleSolenoid.Value.kForward); //Dust pan up
         		SmartDashboard.putString("Auto Status: ", "Up and Forward"); //Send status to dashboard
@@ -151,7 +157,7 @@ public class Robot extends IterativeRobot {
         		driveSchedulerY = 0.0; //Drive the the oppiste of our x error to correct
         		driveSchedulerX = 0.30; //Drive forward at  at 30%
     		}
-    		if(1<2 || ignoreDistance == true){
+    		if(currentDistance <= 6 || ignoreDistance == true){
     			ignoreDistance = true;
     			if(autoStop == false){ //Check if we are done
             		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
@@ -198,7 +204,12 @@ public class Robot extends IterativeRobot {
     	if(gyroSetButton == true){ //Check for button status
     		gyro.calibrate(); //Calibrate gyro to current angle
     	}
-    	
+    	//Ultrasonic
+    	currentDistance = ultrasonic.getValue()*valueToInches;
+    	SmartDashboard.putNumber("Distance Forward", currentDistance);
+    	if(currentDistance > 84){
+    		SmartDashboard.putBoolean("Ready to Shoot", false);
+    	}
     	//Drivetrain
     	invertButton = controller.getRawButton(5); //Create a button to invert the steering
     	if(invertButton == false){ //Check for button update

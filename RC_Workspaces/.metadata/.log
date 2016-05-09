@@ -8262,3 +8262,111 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-01 23:36:30.422
 !MESSAGE [edu.wpi.first.wpilib.plugins.core.wizards.Tag@27779eaa, edu.wpi.first.wpilib.plugins.core.wizards.Tag@758d901e, edu.wpi.first.wpilib.plugins.core.wizards.Tag@56e92cdf, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4741fb8d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@5cd8bf01, edu.wpi.first.wpilib.plugins.core.wizards.Tag@454cd9e4, edu.wpi.first.wpilib.plugins.core.wizards.Tag@5a5c9a46, edu.wpi.first.wpilib.plugins.core.wizards.Tag@12899f13, edu.wpi.first.wpilib.plugins.core.wizards.Tag@b300af4, edu.wpi.first.wpilib.plugins.core.wizards.Tag@2810618f, edu.wpi.first.wpilib.plugins.core.wizards.Tag@16204061, edu.wpi.first.wpilib.plugins.core.wizards.Tag@480f24b1, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4363f0ee, edu.wpi.first.wpilib.plugins.core.wizards.Tag@68d4ed14, edu.wpi.first.wpilib.plugins.core.wizards.Tag@7c638b27]
+!SESSION 2016-05-08 18:49:14.490 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-08 18:49:28.689
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Charlie'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:30.223
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:30.280
+!MESSAGE Install necessary for tools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:31.378
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:31.389
+!MESSAGE Installing cpp if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:31.405
+!MESSAGE Install necessary for cpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:33.916
+!MESSAGE Installedcpp
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:33.942
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:33.961
+!MESSAGE Install necessary for java
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:49:52.925
+!MESSAGE Installedjava
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-05-08 18:50:08.143
+!MESSAGE Error setting focus to : org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl Robot.java
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4491)
+	at org.eclipse.swt.SWT.error(SWT.java:4406)
+	at org.eclipse.swt.SWT.error(SWT.java:4377)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:354)
+	at org.eclipse.swt.widgets.Control.setFocus(Control.java:3354)
+	at org.eclipse.swt.widgets.Composite.setFocus(Composite.java:1056)
+	at org.eclipse.swt.widgets.Composite.setFocus(Composite.java:1056)
+	at org.eclipse.ui.texteditor.StatusTextEditor.setFocus(StatusTextEditor.java:120)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.setFocus(JavaEditor.java:2395)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.delegateSetFocus(CompatibilityPart.java:204)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:252)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:258)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:229)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:107)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.focusGui(PartRenderingEngine.java:775)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2.setFocus(ContributedPartRenderer.java:102)
+	at org.eclipse.swt.custom.CTabItem.setFocus(CTabItem.java:332)
+	at org.eclipse.swt.custom.CTabFolder.setFocus(CTabFolder.java:2602)
+	at org.eclipse.swt.widgets.Control.fixFocus(Control.java:1053)
+	at org.eclipse.swt.widgets.Control.setVisible(Control.java:3859)
+	at org.eclipse.swt.custom.CTabFolder.setSelection(CTabFolder.java:3146)
+	at org.eclipse.swt.custom.CTabFolder.setSelection(CTabFolder.java:3154)
+	at org.eclipse.swt.custom.CTabFolder.onMouse(CTabFolder.java:1841)
+	at org.eclipse.swt.custom.CTabFolder$1.handleEvent(CTabFolder.java:330)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4180)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3769)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:52:52.573
+!MESSAGE [edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@4aebeda8, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7e634ead, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@6ded49c4, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@60729135, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@75e1a63e, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@11138809, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@16374086, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@62b8904c, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@1a900a73, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@174e9ae8, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@3b51cbf7, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@1d4d1621, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@7145469, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@646e17b9, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@515576b0, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@245c8ea5, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@14e215b, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@15093d14, edu.wpi.first.wpilib.plugins.java.wizards.examples.ExampleJavaProject@6f9329f3]
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2016-05-08 18:52:52.579
+!MESSAGE [edu.wpi.first.wpilib.plugins.core.wizards.Tag@2f7aab02, edu.wpi.first.wpilib.plugins.core.wizards.Tag@5fce034f, edu.wpi.first.wpilib.plugins.core.wizards.Tag@373743f, edu.wpi.first.wpilib.plugins.core.wizards.Tag@75591913, edu.wpi.first.wpilib.plugins.core.wizards.Tag@f019e01, edu.wpi.first.wpilib.plugins.core.wizards.Tag@20fa20d5, edu.wpi.first.wpilib.plugins.core.wizards.Tag@38b06a79, edu.wpi.first.wpilib.plugins.core.wizards.Tag@51c7dfd, edu.wpi.first.wpilib.plugins.core.wizards.Tag@66e1ac9, edu.wpi.first.wpilib.plugins.core.wizards.Tag@77e37e59, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4cbb217e, edu.wpi.first.wpilib.plugins.core.wizards.Tag@2aae4e81, edu.wpi.first.wpilib.plugins.core.wizards.Tag@5ce0b14f, edu.wpi.first.wpilib.plugins.core.wizards.Tag@301d1d3c, edu.wpi.first.wpilib.plugins.core.wizards.Tag@25386a90]
