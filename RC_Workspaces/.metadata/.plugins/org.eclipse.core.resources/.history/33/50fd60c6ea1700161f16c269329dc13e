@@ -43,6 +43,8 @@ public class Robot extends IterativeRobot {
 	Compressor c = new Compressor(0); //Create compressor 'c' on 0
 	//Ultrasonic Sensor
 	AnalogInput ultrasonic;
+	//Strings
+	String dustMode = "Up";
 	
 	//Booleans
 	boolean plungerButton; //Create a bool for our plunger button
@@ -66,7 +68,7 @@ public class Robot extends IterativeRobot {
 	double Kp = 0.03; //Constant used to drive forward in a line
 	double driveSchedulerX; //Used to hold X drive value so it can be modified multiple times
 	double driveSchedulerY; //Used to hold Y drive value so it can be modified multiple times
-	double distanceForward;
+	double currentDistance;
 	final double valueToInches = 0.125; //Used for ultrasonic
 	
 	//Ints
@@ -113,7 +115,9 @@ public class Robot extends IterativeRobot {
     	//Gyro
     	double angle = gyro.getAngle(); //Set angle equal to the gyro's angle
 		SmartDashboard.putNumber("Angle: ", angle); //Send the angle to the dashboard
-    	
+    	//Ultrasonic
+    	currentDistance = ultrasonic.getValue()*valueToInches;
+    	SmartDashboard.putNumber("Distance Forward", currentDistance);
 		switch(autoSelected) {
     	case customAuto:
  
@@ -147,15 +151,15 @@ public class Robot extends IterativeRobot {
             	merlin.arcadeDrive(driveSchedulerX, driveSchedulerY); //Drive the robot
         	} 
     	case friesAuto:
-    		if(1<2 && ignoreDistance == false){
+    		if(currentDistance > 6 && ignoreDistance == false){
         		stops.set(DoubleSolenoid.Value.kForward); //Put stop in
         		dustPanSol.set(DoubleSolenoid.Value.kForward); //Dust pan up
         		SmartDashboard.putString("Auto Status: ", "Up and Forward"); //Send status to dashboard
-        		SmartDashboard.putNumber("Distance Forward", distanceForward);	//Send loop to dashboard
+        		SmartDashboard.putNumber("Distance Forward", currentDistance);	//Send loop to dashboard
         		driveSchedulerY = 0.0; //Drive the the oppiste of our x error to correct
         		driveSchedulerX = 0.30; //Drive forward at  at 30%
     		}
-    		if(1<2 || ignoreDistance == true){
+    		if(currentDistance <= 6 || ignoreDistance == true){
     			ignoreDistance = true;
     			if(autoStop == false){ //Check if we are done
             		if(atonLoopCounter < 50){ //Check if we have done 50 loops(About 1 seconds)
@@ -202,7 +206,12 @@ public class Robot extends IterativeRobot {
     	if(gyroSetButton == true){ //Check for button status
     		gyro.calibrate(); //Calibrate gyro to current angle
     	}
-    	
+    	//Ultrasonic
+    	currentDistance = ultrasonic.getValue()*valueToInches;
+    	SmartDashboard.putNumber("Distance Forward", currentDistance);
+    	if(currentDistance > 84){
+    		SmartDashboard.putBoolean("Ready to Shoot", false);
+    	}
     	//Drivetrain
     	invertButton = controller.getRawButton(5); //Create a button to invert the steering
     	if(invertButton == false){ //Check for button update
@@ -247,7 +256,47 @@ public class Robot extends IterativeRobot {
         	flyWheel.set(0); //Stop wheel
         	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
-    	
+        //Dustpan Code
+        if(upButton == true && downButton == false){
+        	if(dustMode == "Up"){
+        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
+        		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
+        		dustMode = "Up";
+        	}
+        	if(dustMode == "Middle"){
+        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
+        		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
+        		dustMode = "Up";
+        	}
+        	if(dustMode == "Down"){
+        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
+        		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
+        		dustMode = "Up";
+        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
+        	}        	
+        }
+        if(upButton == false && downButton == true){
+        	if(dustMode == "Up"){
+        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
+        		SmartDashboard.putString("Dustpan Status: ", "Middle"); //Send status to Dashboard
+        		stops.set(DoubleSolenoid.Value.kReverse); //Set locks in
+        		dustMode = "Middle";
+        	}
+        	if(dustMode == "Middle"){
+        		dustPanSol.set(DoubleSolenoid.Value.kReverse); //The dust pan cylinders are driven up by air and let to free fall
+        		SmartDashboard.putString("Dustpan Status: ", "Down"); //Send status to Dashboard
+        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
+        		dustMode = "Down";
+        	}
+        	if(dustMode == "Down"){
+        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
+        		SmartDashboard.putString("Dustpan Status: ", "Down"); //Send status to Dashboard
+        		dustMode = "Down";
+        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
+        	}    
+        }
+        
+        /*
         //Dust Pan Moving Code
     	upButton = stick.getRawButton(9); //Create a button to move dust pan up
     	downButton = stick.getRawButton(10); //Create a button to move dust pan down
@@ -287,7 +336,7 @@ public class Robot extends IterativeRobot {
     	if(locksEngaded == true){
     		SmartDashboard.putString("Locks Status: ", "In"); //Send status
     	}
-    	
+    	*/
     	//Ball Plunger
     	plungerButton = stick.getRawButton(1); //Create a button to control the plunger
     	if(plungerButton == true){
@@ -306,8 +355,12 @@ public class Robot extends IterativeRobot {
     }
     
     public void testPeriodic() { //Used to pressurize before a match
+    	//Ultrasonic
+    	currentDistance = ultrasonic.getValue()*valueToInches;
+    	SmartDashboard.putNumber("Distance Forward", currentDistance);
     	c.setClosedLoopControl(true); //Turn compressor on closed loop
     	dustPanSol.set(DoubleSolenoid.Value.kForward); //Set dustpan up
+    	dustMode = "Up";
     }
     
 }
