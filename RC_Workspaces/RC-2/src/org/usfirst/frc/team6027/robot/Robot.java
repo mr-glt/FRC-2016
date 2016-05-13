@@ -2,7 +2,6 @@
 package org.usfirst.frc.team6027.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.io.IOException;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -62,14 +61,14 @@ public class Robot extends IterativeRobot {
 	double Kp = 0.03; //Constant used to drive forward in a line
 	double driveSchedulerX; //Used to hold X drive value so it can be modified multiple times
 	double driveSchedulerY; //Used to hold Y drive value so it can be modified multiple times
-	double currentDistance;
+	double currentDistance = 0;
 	final double valueToInches = 0.125; //Used for ultrasonic
 	
 	//Ints
 	int atonLoopCounter; //Loop used to order auto mode
 	
     public void robotInit() {
-    	
+    	ultrasonic = new AnalogInput(3);  
     	//Drivetrain
     	merlin = new RobotDrive(0,9,1,8); //Assign robotdrive on the 4 pwm pins
     	
@@ -145,12 +144,13 @@ public class Robot extends IterativeRobot {
     	if(gyroSetButton == true){ //Check for button status
     		gyro.calibrate(); //Calibrate gyro to current angle
     	}
+    	
     	//Ultrasonic
     	currentDistance = ultrasonic.getValue()*valueToInches;
     	SmartDashboard.putNumber("Distance Forward", currentDistance);
-    	if(currentDistance > 84){
-    		SmartDashboard.putBoolean("Ready to Shoot", false);
-    	}
+    	//if(currentDistance > 84){
+    	//	SmartDashboard.putBoolean("Ready to Shoot", false);
+    	
     	//Drivetrain
     	invertButton = controller.getRawButton(5); //Create a button to invert the steering
     	if(invertButton == false){ //Check for button update
@@ -196,7 +196,11 @@ public class Robot extends IterativeRobot {
         	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
         //Dustpan Code
-        if(upButton == true && downButton == false){
+    	/*
+        upButton = stick.getRawButton(9); //Create a button to move dust pan up
+    	downButton = stick.getRawButton(10); //Create a button to move dust pan down
+        if(upButton == true){
+        	SmartDashboard.putString("Status", "Up");
         	if(dustMode == "Up"){
         		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
         		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
@@ -214,11 +218,13 @@ public class Robot extends IterativeRobot {
         		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
         	}        	
         }
-        if(upButton == false && downButton == true){
+
+        if(downButton == true){
+        	SmartDashboard.putString("Status", "Down");
         	if(dustMode == "Up"){
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
+        		dustPanSol.set(DoubleSolenoid.Value.kReverse); //The dust pan cylinders are driven up by air and let to free fall
         		SmartDashboard.putString("Dustpan Status: ", "Middle"); //Send status to Dashboard
-        		stops.set(DoubleSolenoid.Value.kReverse); //Set locks in
+        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
         		dustMode = "Middle";
         	}
         	if(dustMode == "Middle"){
@@ -235,7 +241,7 @@ public class Robot extends IterativeRobot {
         	}    
         }
         
-        /*
+        */
         //Dust Pan Moving Code
     	upButton = stick.getRawButton(9); //Create a button to move dust pan up
     	downButton = stick.getRawButton(10); //Create a button to move dust pan down
@@ -275,7 +281,7 @@ public class Robot extends IterativeRobot {
     	if(locksEngaded == true){
     		SmartDashboard.putString("Locks Status: ", "In"); //Send status
     	}
-    	*/
+    	
     	//Ball Plunger
     	plungerButton = stick.getRawButton(1); //Create a button to control the plunger
     	if(plungerButton == true){
