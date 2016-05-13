@@ -10,4 +10,5 @@
 <fullyQualifiedTypeName name="org.usfirst.frc.team6027.robot.commands.DrivetrainDoNothing"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team6027.robot.Robot"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.DigitalInput"/>
 </qualifiedTypeNameHistroy>
