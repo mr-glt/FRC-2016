@@ -41,11 +41,11 @@ public class Robot extends IterativeRobot {
 	
 	//Booleans
 	boolean plungerButton; //Create a bool for our plunger button
-	double upButton; //Create a bool for our dust pan up button
+	boolean upButton; //Create a bool for our dust pan up button
 	boolean locksButtonValue; //Create a bool for our locks open button
 	boolean locksButtonCloseValue; //Create a bool for our lock close button
 	boolean invertButton; //Create a bool for our inversion button
-	double downButton; //Create a bool for our dust pan down button
+	boolean downButton; //Create a bool for our dust pan down button
 	boolean spinShooterwheelForward; //Create a bool for our fly wheel out button
 	boolean spinShooterwheelBackward; //Create a bool for our fly wheel in button
 	boolean slowModeButton; //Create a bool for our slow mode button
@@ -243,16 +243,15 @@ public class Robot extends IterativeRobot {
         
         */
         //Dust Pan Moving Code
-    	upButton = stick.getY(); //Create a button to move dust pan up
-    	//downButton = stick.getMagnitude()(10); //Create a button to move dust pan down
-    	SmartDashboard.putNumber("hing", upButton);
-    	if(upButton == 1){
+    	upButton = stick.getRawButton(9); //Create a button to move dust pan up
+    	downButton = stick.getRawButton(10); //Create a button to move dust pan down
+    	if(upButton == true && downButton == false){
     		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
     		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
     		dustpanUpStatus = true; //Bool to say dust pan is up
     		triggerClose = true; //Trigger the locks
     	}
-    	if(upButton == -1){
+    	if(downButton == true && upButton == false){
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Dustpan Status: ", "Down");
     		dustpanUpStatus = false; //Bool to say dust pan is down

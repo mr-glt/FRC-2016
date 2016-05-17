@@ -243,7 +243,7 @@ public class Robot extends IterativeRobot {
         
         */
         //Dust Pan Moving Code
-    	upButton = stick.getY(); //Create a button to move dust pan up
+    	upButton = stick.getMagnitude(); //Create a button to move dust pan up
     	//downButton = stick.getMagnitude()(10); //Create a button to move dust pan down
     	SmartDashboard.putNumber("hing", upButton);
     	if(upButton == 1){
@@ -252,7 +252,7 @@ public class Robot extends IterativeRobot {
     		dustpanUpStatus = true; //Bool to say dust pan is up
     		triggerClose = true; //Trigger the locks
     	}
-    	if(upButton == -1){
+    	if(downButton == 1){
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Dustpan Status: ", "Down");
     		dustpanUpStatus = false; //Bool to say dust pan is down

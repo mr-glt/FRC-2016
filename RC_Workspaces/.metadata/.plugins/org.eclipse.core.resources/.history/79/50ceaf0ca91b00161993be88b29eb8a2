@@ -252,7 +252,7 @@ public class Robot extends IterativeRobot {
     		dustpanUpStatus = true; //Bool to say dust pan is up
     		triggerClose = true; //Trigger the locks
     	}
-    	if(upButton == -1){
+    	if(upButton == 1){
     		dustPanSol.set(DoubleSolenoid.Value.kReverse);
     		SmartDashboard.putString("Dustpan Status: ", "Down");
     		dustpanUpStatus = false; //Bool to say dust pan is down
