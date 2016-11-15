@@ -61,7 +61,7 @@ public class Robot extends IterativeRobot {
 	double Kp = 0.03; //Constant used to drive forward in a line
 	double driveSchedulerX; //Used to hold X drive value so it can be modified multiple times
 	double driveSchedulerY; //Used to hold Y drive value so it can be modified multiple times
-	double currentDistance = 0;
+	double currentDistance = 0; //Used to hold distance
 	final double valueToInches = 0.125; //Used for ultrasonic
 	
 	//Ints
@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
     	
     	
     	
-    	//Grip-More info here: https://github.com/WPIRoboticsProjects/GRIP/wiki/Tutorial:-Run-GRIP-from-a-CPP,-Java,-or-LabVIEW-FRC-program
+    	//Grip: More info here: https://github.com/WPIRoboticsProjects/GRIP/wiki/Tutorial:-Run-GRIP-from-a-CPP,-Java,-or-LabVIEW-FRC-program
     	try {
             new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
         } catch (IOException e) {
@@ -195,53 +195,6 @@ public class Robot extends IterativeRobot {
         	flyWheel.set(0); //Stop wheel
         	SmartDashboard.putString("Shooter Wheel: ", "Off");
         }
-        //Dustpan Code
-    	/*
-        upButton = stick.getRawButton(9); //Create a button to move dust pan up
-    	downButton = stick.getRawButton(10); //Create a button to move dust pan down
-        if(upButton == true){
-        	SmartDashboard.putString("Status", "Up");
-        	if(dustMode == "Up"){
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
-        		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
-        		dustMode = "Up";
-        	}
-        	if(dustMode == "Middle"){
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
-        		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
-        		dustMode = "Up";
-        	}
-        	if(dustMode == "Down"){
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
-        		SmartDashboard.putString("Dustpan Status: ", "Up"); //Send status to Dashboard
-        		dustMode = "Up";
-        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
-        	}        	
-        }
-
-        if(downButton == true){
-        	SmartDashboard.putString("Status", "Down");
-        	if(dustMode == "Up"){
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse); //The dust pan cylinders are driven up by air and let to free fall
-        		SmartDashboard.putString("Dustpan Status: ", "Middle"); //Send status to Dashboard
-        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
-        		dustMode = "Middle";
-        	}
-        	if(dustMode == "Middle"){
-        		dustPanSol.set(DoubleSolenoid.Value.kReverse); //The dust pan cylinders are driven up by air and let to free fall
-        		SmartDashboard.putString("Dustpan Status: ", "Down"); //Send status to Dashboard
-        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
-        		dustMode = "Down";
-        	}
-        	if(dustMode == "Down"){
-        		dustPanSol.set(DoubleSolenoid.Value.kForward); //The dust pan cylinders are driven up by air and let to free fall
-        		SmartDashboard.putString("Dustpan Status: ", "Down"); //Send status to Dashboard
-        		dustMode = "Down";
-        		stops.set(DoubleSolenoid.Value.kForward); //Set locks in
-        	}    
-        }
-        
-        */
         //Dust Pan Moving Code
     	upButton = stick.getY(); //Create a button to move dust pan up
     	//downButton = stick.getMagnitude()(10); //Create a button to move dust pan down
